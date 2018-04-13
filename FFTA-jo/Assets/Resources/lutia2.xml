@@ -1,0 +1,367 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<mapXml xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<tile id="0">
+		<height>5</height>
+		<row>0</row>
+		<column>0</column>
+		<object>0</object>
+		<left>-9</left>
+		<up>5</up>
+		<right>1</right>
+		<down>-9</down>
+	</tile>
+	<tile id="1">
+		<height>5</height>
+		<row>0</row>
+		<column>1</column>
+		<object>0</object>
+		<left>0</left>
+		<up>6</up>
+		<right>2</right>
+		<down>-9</down>
+	</tile>
+	<tile id="2">
+		<height>6</height>
+		<row>0</row>
+		<column>2</column>
+		<object>1</object>
+		<left>1</left>
+		<up>7</up>
+		<right>3</right>
+		<down>-9</down>
+	</tile>
+	<tile id="3">
+		<height>5</height>
+		<row>0</row>
+		<column>3</column>
+		<object>0</object>
+		<left>2</left>
+		<up>8</up>
+		<right>4</right>
+		<down>-9</down>
+	</tile>
+	<tile id="4">
+		<height>4</height>
+		<row>0</row>
+		<column>4</column>
+		<object>0</object>
+		<left>3</left>
+		<up>9</up>
+		<right>-9</right>
+		<down>-9</down>
+	</tile>
+	
+	<tile id="5">
+		<height>5</height>
+		<row>1</row>
+		<column>0</column>
+		<object>0</object>
+		<left>-9</left>
+		<up>12</up>
+		<right>6</right>
+		<down>0</down>
+	</tile>
+	<tile id="6">
+		<height>5</height>
+		<row>1</row>
+		<column>1</column>
+		<object>0</object>
+		<left>5</left>
+		<up>13</up>
+		<right>7</right>
+		<down>1</down>
+	</tile>
+	<tile id="7">
+		<height>7</height>
+		<row>1</row>
+		<column>2</column>
+		<object>1</object>
+		<left>6</left>
+		<up>14</up>
+		<right>8</right>
+		<down>2</down>
+	</tile>
+	<tile id="8">
+		<height>6</height>
+		<row>1</row>
+		<column>3</column>
+		<object>0</object>
+		<left>7</left>
+		<up>15</up>
+		<right>9</right>
+		<down>3</down>
+	</tile>
+	<tile id="9">
+		<height>5</height>
+		<row>1</row>
+		<column>4</column>
+		<object>0</object>
+		<left>8</left>
+		<up>16</up>
+		<right>10</right>
+		<down>4</down>
+	</tile>
+	<tile id="10">
+		<height>4</height>
+		<row>1</row>
+		<column>5</column>
+		<object>0</object>
+		<left>9</left>
+		<up>17</up>
+		<right>11</right>
+		<down>-9</down>
+	</tile>
+	<tile id="11">
+		<height>4</height>
+		<row>1</row>
+		<column>6</column>
+		<object>1</object>
+		<left>10</left>
+		<up>18</up>
+		<right>-9</right>
+		<down>-9</down>
+	</tile>
+
+	<tile id="12">
+		<height>7</height>
+		<row>2</row>
+		<column>0</column>
+		<object>0</object>
+		<left>-9</left>
+		<up>19</up>
+		<right>13</right>
+		<down>5</down>
+	</tile>
+	<tile id="13">
+		<height>6</height>
+		<row>2</row>
+		<column>1</column>
+		<object>0</object>
+		<left>12</left>
+		<up>20</up>
+		<right>14</right>
+		<down>6</down>
+	</tile>
+	<tile id="14">
+		<height>6</height>
+		<row>2</row>
+		<column>2</column>
+		<object>0</object>
+		<left>13</left>
+		<up>21</up>
+		<right>15</right>
+		<down>7</down>
+	</tile>
+	<tile id="15">
+		<height>8</height>
+		<row>2</row>
+		<column>3</column>
+		<object>1</object>
+		<left>14</left>
+		<up>22</up>
+		<right>16</right>
+		<down>8</down>
+	</tile>
+	<tile id="16">
+		<height>8</height>
+		<row>2</row>
+		<column>4</column>
+		<object>1</object>
+		<left>15</left>
+		<up>23</up>
+		<right>17</right>
+		<down>9</down>
+	</tile>
+	<tile id="17">
+		<height>4</height>
+		<row>2</row>
+		<column>5</column>
+		<object>0</object>
+		<left>16</left>
+		<up>24</up>
+		<right>18</right>
+		<down>10</down>
+	</tile>
+	<tile id="18">
+		<height>3</height>
+		<row>2</row>
+		<column>6</column>
+		<object>0</object>
+		<left>17</left>
+		<up>25</up>
+		<right>-9</right>
+		<down>11</down>
+	</tile>
+
+	<tile id="19">
+		<height>7</height>
+		<row>3</row>
+		<column>0</column>
+		<object>0</object>
+		<left>-9</left>
+		<up>26</up>
+		<right>20</right>
+		<down>12</down>
+	</tile>
+	<tile id="20">
+		<height>6</height>
+		<row>3</row>
+		<column>1</column>
+		<object>0</object>
+		<left>19</left>
+		<up>27</up>
+		<right>21</right>
+		<down>13</down>
+	</tile>
+	<tile id="21">
+		<height>6</height>
+		<row>3</row>
+		<column>2</column>
+		<object>0</object>
+		<left>20</left>
+		<up>28</up>
+		<right>22</right>
+		<down>14</down>
+	</tile>
+	<tile id="22">
+		<height>6</height>
+		<row>3</row>
+		<column>3</column>
+		<object>0</object>
+		<left>21</left>
+		<up>29</up>
+		<right>23</right>
+		<down>15</down>
+	</tile>
+	<tile id="23">
+		<height>6</height>
+		<row>3</row>
+		<column>4</column>
+		<object>0</object>
+		<left>22</left>
+		<up>30</up>
+		<right>24</right>
+		<down>16</down>
+	</tile>
+	<tile id="24">
+		<height>5</height>
+		<row>3</row>
+		<column>5</column>
+		<object>1</object>
+		<left>23</left>
+		<up>31</up>
+		<right>25</right>
+		<down>17</down>
+	</tile>
+	<tile id="25">
+		<height>3</height>
+		<row>3</row>
+		<column>6</column>
+		<object>0</object>
+		<left>24</left>
+		<up>32</up>
+		<right>-9</right>
+		<down>18</down>
+	</tile>
+
+	<tile id="26">
+		<height>8</height>
+		<row>4</row>
+		<column>0</column>
+		<object>0</object>
+		<left>-9</left>
+		<up>-9</up>
+		<right>27</right>
+		<down>19</down>
+	</tile>
+	<tile id="27">
+		<height>8</height>
+		<row>4</row>
+		<column>1</column>
+		<object>1</object>
+		<left>26</left>
+		<up>-9</up>
+		<right>28</right>
+		<down>20</down>
+	</tile>
+	<tile id="28">
+		<height>7</height>
+		<row>4</row>
+		<column>2</column>
+		<object>0</object>
+		<left>27</left>
+		<up>-9</up>
+		<right>29</right>
+		<down>21</down>
+	</tile>
+	<tile id="29">
+		<height>6</height>
+		<row>4</row>
+		<column>3</column>
+		<object>0</object>
+		<left>28</left>
+		<up>-9</up>
+		<right>30</right>
+		<down>22</down>
+	</tile>
+	<tile id="30">
+		<height>6</height>
+		<row>4</row>
+		<column>4</column>
+		<object>0</object>
+		<left>29</left>
+		<up>-9</up>
+		<right>31</right>
+		<down>23</down>
+	</tile>
+	<tile id="31">
+		<height>4</height>
+		<row>4</row>
+		<column>5</column>
+		<object>0</object>
+		<left>30</left>
+		<up>-9</up>
+		<right>32</right>
+		<down>24</down>
+	</tile>
+	<tile id="32">
+		<height>3</height>
+		<row>4</row>
+		<column>6</column>
+		<object>0</object>
+		<left>31</left>
+		<up>-9</up>
+		<right>33</right>
+		<down>25</down>
+	</tile>
+	<tile id="33">
+		<height>2</height>
+		<row>4</row>
+		<column>7</column>
+		<object>0</object>
+		<left>32</left>
+		<up>-9</up>
+		<right>34</right>
+		<down>-9</down>
+	</tile>
+	<tile id="34">
+		<height>1</height>
+		<row>4</row>
+		<column>8</column>
+		<object>0</object>
+		<left>33</left>
+		<up>-9</up>
+		<right>35</right>
+		<down>-9</down>
+	</tile>
+	<tile id="35">
+		<height>1</height>
+		<row>4</row>
+		<column>9</column>
+		<object>0</object>
+		<left>34</left>
+		<up>-9</up>
+		<right>-9</right>
+		<down>-9</down>
+	</tile>
+</mapXml>
