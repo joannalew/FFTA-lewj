@@ -4,16 +4,14 @@ using UnityEngine;
 
 public class PrefabHolder : MonoBehaviour {
     public GameObject Tile;
-    public GameObject Cursor;
+    public GameObject CursorBase;
+    public GameObject CursorTop;
 
     private static PrefabHolder _instance;
 
     public static PrefabHolder Instance
     {
-        get
-        {
-            return _instance;
-        }
+        get{ return _instance; }
     }
 
     void Awake()

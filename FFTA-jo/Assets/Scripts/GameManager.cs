@@ -12,12 +12,16 @@ public class GameManager : MonoBehaviour {
     private Tile prevTile = null;
     private Tile currTile = null;
     private GameObject cursor;
+    private GameObject cursorTop;
     private SpriteRenderer cursorSprite;
+
+    private Camera mainCamera;
 
 	// Use this for initialization
 	private void Awake ()
     {
         Instance = this;
+        mainCamera = Camera.main;
         mapObject = transform.Find("mapObject").gameObject;
 	}
 	
@@ -25,7 +29,9 @@ public class GameManager : MonoBehaviour {
     {
         XMLManager.LoadMap(map, mapObject);
         currTile = map[0];
-        cursor = (GameObject)Instantiate(PrefabHolder.Instance.Cursor, currTile.transform.position, Quaternion.identity);
+        cursor = (GameObject)Instantiate(PrefabHolder.Instance.CursorBase, currTile.transform.position, Quaternion.identity);
+        cursorTop = (GameObject)Instantiate(PrefabHolder.Instance.CursorTop, currTile.transform.position, Quaternion.identity);
+        cursorTop.transform.position += new Vector3(0, 2f, 0);
         cursorSprite = cursor.GetComponent<SpriteRenderer>();
     }
 
@@ -41,12 +47,12 @@ public class GameManager : MonoBehaviour {
         if (currTile != null)
         {
             cursor.transform.position = currTile.transform.position;
-            /*
+            cursorTop.transform.position = cursor.transform.position + new Vector3(0, 2f, 0);
+            moveCamera(cursor.transform.position);
             if (currTile.hasObj)
                 cursorSprite.sortingLayerName = "3";
             else
                 cursorSprite.sortingLayerName = "1";
-            */
         }
         else
             currTile = prevTile;
@@ -64,5 +70,17 @@ public class GameManager : MonoBehaviour {
             moveCursor(3);
     }
 
+    private void moveCamera(Vector3 target)
+    {
+        if (target.x - mainCamera.transform.position.x > 5.5f)
+            mainCamera.transform.position += Vector3.right;
+        else if (target.x - mainCamera.transform.position.x < -5)
+            mainCamera.transform.position += Vector3.left;
+
+        if (target.y - mainCamera.transform.position.y > 3.5f)
+            mainCamera.transform.position += Vector3.up;
+        else if (target.y - mainCamera.transform.position.y < -2.5f)
+            mainCamera.transform.position += Vector3.down;
+    }
 
 }

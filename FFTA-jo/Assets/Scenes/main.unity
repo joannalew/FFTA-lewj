@@ -261,7 +261,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 142220638}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 10, y: 0, z: -10}
+  m_LocalPosition: {x: 0, y: 0.5, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -385,15 +385,21 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 114697243380293748, guid: 29faf7d3c3fb9b040b923824d4484aa4,
         type: 2}
-      propertyPath: Cursor
-      value: 
-      objectReference: {fileID: 1726156114711678, guid: 7af28b19f92bf1448964d3fe37d27d4e,
-        type: 2}
-    - target: {fileID: 114697243380293748, guid: 29faf7d3c3fb9b040b923824d4484aa4,
-        type: 2}
       propertyPath: Tile
       value: 
       objectReference: {fileID: 1207353631051896, guid: 47a45745128c5f043936da037d2f7636,
+        type: 2}
+    - target: {fileID: 114697243380293748, guid: 29faf7d3c3fb9b040b923824d4484aa4,
+        type: 2}
+      propertyPath: CursorBase
+      value: 
+      objectReference: {fileID: 1875424656556766, guid: a67c231aa4714c144be51143e325a3b3,
+        type: 2}
+    - target: {fileID: 114697243380293748, guid: 29faf7d3c3fb9b040b923824d4484aa4,
+        type: 2}
+      propertyPath: CursorTop
+      value: 
+      objectReference: {fileID: 1769212660688602, guid: 613e9b7ce564ec2408dbef26c6b2be58,
         type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 29faf7d3c3fb9b040b923824d4484aa4, type: 2}
