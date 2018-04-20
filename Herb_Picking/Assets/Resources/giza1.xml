@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<mapXml xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<tile id="0">
+		<height>1</height>
+		<row>0</row>
+		<column>0</column>
+		<object>0</object>
+		<left>-9</left>
+		<up>-9</up>
+		<right>1</right>
+		<down>-9</down>
+	</tile>
+	<tile id="1">
+		<height>1</height>
+		<row>0</row>
+		<column>1</column>
+		<object>0</object>
+		<left>0</left>
+		<up>-9</up>
+		<right>2</right>
+		<down>-9</down>
+	</tile>
+	<tile id="2">
+		<height>1</height>
+		<row>0</row>
+		<column>2</column>
+		<object>0</object>
+		<left>1</left>
+		<up>-9</up>
+		<right>3</right>
+		<down>-9</down>
+	</tile>
+	<tile id="3">
+		<height>2</height>
+		<row>0</row>
+		<column>3</column>
+		<object>1</object>
+		<left>2</left>
+		<up>-9</up>
+		<right>4</right>
+		<down>-9</down>
+	</tile>
+	<tile id="4">
+		<height>2</height>
+		<row>0</row>
+		<column>4</column>
+		<object>0</object>
+		<left>3</left>
+		<up>-9</up>
+		<right>-9</right>
+		<down>-9</down>
+	</tile>
+</mapXml>
