@@ -10,6 +10,10 @@ public class Tile : MonoBehaviour {
     public int col;
     public bool hasObj = false;
     public Tile[] neighbors = new Tile[4] { null, null, null, null };  // left, up, right, down
+    public int sort = 0;
+
+    public Tile parent = null;
+    public int cost = -1;
 
     public Tile(int i, int ht, int r, int c, bool obj, Tile[] nbr)
     {

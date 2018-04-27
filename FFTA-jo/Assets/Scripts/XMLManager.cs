@@ -14,23 +14,40 @@ public static class XMLManager
     {
         XDocument xmlDoc = XDocument.Load("Assets/Resources/lutia2.xml");
         IEnumerable<XElement> tiles = xmlDoc.Descendants("tile");
+        int objectCount = 0;
 
         foreach (var tile in tiles)
         {
             Tile myTile = ((GameObject)Transform.Instantiate(PrefabHolder.Instance.Tile)).GetComponent<Tile>();
 
+            // translate XML doc data
             myTile.id = int.Parse(tile.Attribute("id").Value);
             myTile.height = int.Parse(tile.Element("height").Value);
             myTile.row = int.Parse(tile.Element("row").Value);
             myTile.col = int.Parse(tile.Element("column").Value);
             myTile.hasObj = int.Parse(tile.Element("object").Value) != 0;
             myTile.neighbors = new Tile[4] { null, null, null, null };
+            myTile.sort = 3 * (250 - (myTile.row * 10 - myTile.col));
 
+            // for A* pathfinding
+            myTile.parent = null;
+            myTile.cost = -1;
+
+            // actual position in Unity
             float x = (myTile.row + myTile.col) * 1.0f;
             float y = (myTile.row + myTile.height - myTile.col) * 0.5f;
-            float z = (myTile.row * 1.0f) - (myTile.col * 0.1f);
+            float z = 0;
             myTile.transform.position = new Vector3(x, y, z);
             myTile.transform.parent = mapObject.transform;
+
+            // subsprite rendering
+            if (myTile.hasObj)
+            {
+                SpriteRenderer mySprite = myTile.GetComponent<SpriteRenderer>();
+                mySprite.sprite = AssetHolder.Instance.Lutia2MapObjects[objectCount];
+                mySprite.sortingOrder = myTile.sort;
+                objectCount++;
+            }
 
             map.Add(myTile);
         }
@@ -50,6 +67,15 @@ public static class XMLManager
 
             if (int.Parse(tile.Element("down").Value) != -9)
                 map[id].neighbors[3] = map[int.Parse(tile.Element("down").Value)]; 
+        }
+    }
+
+    public static void resetMap(List<Tile> map)
+    {
+        foreach (var tile in map)
+        {
+            tile.parent = null;
+            tile.cost = -1;
         }
     }
 }
