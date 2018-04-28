@@ -6,11 +6,13 @@ using UnityEngine;
 public class Character : MonoBehaviour {
 
     public int currFace = 3;
+    public Tile tileLoc;
+    public int group;
+
     public Vector3 playerOffset = new Vector3(0, 0.7f, 0);
     public List<Tile> moveQueue = new List<Tile>();
     public float moveSpeed;
-    public Tile tileLoc;
-
+    
     private SpriteRenderer charSprite;
     private Animator charAnimator;
 
@@ -19,12 +21,18 @@ public class Character : MonoBehaviour {
         charSprite = GetComponent<SpriteRenderer>();
         charAnimator = GetComponent<Animator>();
         moveSpeed = 3.5f;
+        group = 1;
     }
 
-    public void Move(List<Tile> map, Tile currTile, Tile endTile)
+    public bool Move(List<Tile> map, Tile currTile, Tile endTile)
     {
-        moveQueue = Astar(map, currTile, endTile);
-        StartCoroutine(SmoothMove(moveQueue));
+        if (endTile.occupied == 0 || endTile.occupied == group)
+        {
+            moveQueue = Astar(map, currTile, endTile);
+            StartCoroutine(SmoothMove(moveQueue));
+            return true;
+        }
+        return false;
     }
 
     private IEnumerator SmoothMove(List<Tile> path)
@@ -33,19 +41,80 @@ public class Character : MonoBehaviour {
         {
             Vector3 end = path[i].transform.position + playerOffset;
             float sqrRemaining = (transform.position - end).sqrMagnitude;
+            float moveOffset = 0f;
 
             int newDir = getDir(tileLoc, path[i]);
             faceDir(newDir);
 
+            int heightDiff = (path[i].height > tileLoc.height) ? path[i].height - tileLoc.height : tileLoc.height - path[i].height;
+            if (heightDiff == 1)
+            {
+                resetAnim(charAnimator);
+                if (newDir == 0 || newDir == 1)
+                    charAnimator.SetBool("marchLowJumpB", true);         
+                else if (newDir == 2 || newDir == 3)
+                    charAnimator.SetBool("marchLowJumpF", true);
+            }
+            else if (heightDiff >= 2)
+            {
+                resetAnim(charAnimator);
+                if (newDir == 0 || newDir == 1)
+                    charAnimator.SetBool("marchHighJumpB", true);
+                else if (newDir == 2 || newDir == 3)
+                    charAnimator.SetBool("marchHighJumpF", true);
+            }
+             
             while (sqrRemaining > float.Epsilon)
             {
-                transform.position = Vector3.MoveTowards(transform.position, end, moveSpeed * Time.deltaTime);
+                if (heightDiff == 1)
+                    moveOffset = lowJumpOffset(tileLoc, newDir);
+                else if (heightDiff >= 2)
+                    moveOffset = highJumpOffset(tileLoc, newDir);
+
+                transform.position = Vector3.MoveTowards(transform.position, end + new Vector3(0, moveOffset, 0), moveSpeed * Time.deltaTime);
                 sqrRemaining = (transform.position - end).sqrMagnitude;
+
+                if (sqrRemaining < 0.4f)
+                    charSprite.sortingOrder = path[i].sort + 2;
+
                 yield return null;
             }
 
+            resetAnim(charAnimator);
+            if (newDir == 0 || newDir == 1)
+                charAnimator.SetBool("marchWalkB", true);
+            else if (newDir == 2 || newDir == 3)
+                charAnimator.SetBool("marchWalkF", true);
+                
             tileLoc = path[i];
-            charSprite.sortingOrder = tileLoc.sort + 2;
+        }
+    }
+
+    private float lowJumpOffset(Tile currTile, int direction)
+    {
+        if (direction == 0 || direction == 1)
+        {
+            float y = Mathf.Abs(transform.position.x - currTile.transform.position.x);
+            return -1.7f * y * y + 1.7f * y;
+        }
+        else
+        {
+            float y = Mathf.Abs(transform.position.x - currTile.transform.position.x);
+            return -1.7f * y * y + 1.7f * y;
+        }
+    }
+
+    private float highJumpOffset(Tile currTile, int direction)
+    {
+        if (direction == 0 || direction == 1)
+        {
+            float y = Mathf.Abs(transform.position.x - currTile.transform.position.x);
+            return -4f * y * y + 4f * y;
+        }
+        else
+        {
+            float y = Mathf.Abs(transform.position.x - currTile.transform.position.x);
+            return -4f * y * y + 4f * y;
         }
     }
 
@@ -59,14 +128,14 @@ public class Character : MonoBehaviour {
 
         if (dir == 0 || dir == 1)
         {
+            resetAnim(charAnimator);
             charAnimator.SetBool("marchWalkB", true);
-            charAnimator.SetBool("marchWalkF", false);
             currFace = dir;
         }
         else if (dir == 2 || dir == 3)
         {
+            resetAnim(charAnimator);
             charAnimator.SetBool("marchWalkF", true);
-            charAnimator.SetBool("marchWalkB", false);
             currFace = dir;
         }
     }
@@ -82,6 +151,14 @@ public class Character : MonoBehaviour {
         return -1;
     }
 
+    private void resetAnim(Animator anim)
+    {
+        foreach (AnimatorControllerParameter param in anim.parameters)
+        {
+            if (param.type == AnimatorControllerParameterType.Bool)
+                anim.SetBool(param.name, false);
+        }
+    }
 
     private List<Tile> Astar(List<Tile> map, Tile start, Tile end)
     {
@@ -106,7 +183,7 @@ public class Character : MonoBehaviour {
             {
                 if (tile)
                 {
-                    if (!closed.Contains(tile) && !open.Contains(tile))
+                    if (!closed.Contains(tile) && !open.Contains(tile) && (tile.occupied == group || tile.occupied == 0))
                     {
                         tile.parent = current;
                         tile.cost = 1 + tile.parent.cost;

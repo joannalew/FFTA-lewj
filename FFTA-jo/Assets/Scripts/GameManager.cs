@@ -86,8 +86,8 @@ public class GameManager : MonoBehaviour {
 
         if (Input.GetKeyDown(KeyCode.Z))
         {
-            player.Move(map, playerTile, currTile);
-            playerTile = currTile;
+            if (player.Move(map, playerTile, currTile))
+                playerTile = currTile;
         }
     }
 

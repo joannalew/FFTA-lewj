@@ -27,6 +27,8 @@ public static class XMLManager
             myTile.col = int.Parse(tile.Element("column").Value);
             myTile.hasObj = int.Parse(tile.Element("object").Value) != 0;
             myTile.neighbors = new Tile[4] { null, null, null, null };
+
+            myTile.occupied = int.Parse(tile.Element("occupy").Value);
             myTile.sort = 3 * (250 - (myTile.row * 10 - myTile.col));
 
             // for A* pathfinding
