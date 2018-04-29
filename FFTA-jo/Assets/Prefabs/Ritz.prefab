@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4760726284861652}
   - component: {fileID: 212118843454504780}
   - component: {fileID: 95583426252323446}
+  - component: {fileID: 114076743465087728}
   m_Layer: 0
   m_Name: Ritz
   m_TagString: Untagged
@@ -58,6 +59,23 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &114076743465087728
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1525583964332754}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f494ec70289099b4788651d5a89cf200, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currFace: 3
+  tileLoc: {fileID: 0}
+  group: 0
+  playerOffset: {x: 0, y: 0.7, z: 0}
+  moveQueue: []
+  moveSpeed: 0
 --- !u!212 &212118843454504780
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -89,9 +107,9 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingLayerID: -1379632937
+  m_SortingLayer: 2
+  m_SortingOrder: 2
   m_Sprite: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
