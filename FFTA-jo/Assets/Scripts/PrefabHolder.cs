@@ -6,7 +6,9 @@ public class PrefabHolder : MonoBehaviour {
     public GameObject Tile;
     public GameObject CursorBase;
     public GameObject CursorTop;
-    public GameObject Player;
+    public GameObject Shadow;
+    public GameObject[] Player;
+
 
     private static PrefabHolder _instance;
 

@@ -179,9 +179,9 @@ TextureImporter:
       name: attacking_5
       rect:
         serializedVersion: 2
-        x: 90
+        x: 89
         y: 0
-        width: 16
+        width: 17
         height: 32
       alignment: 0
       pivot: {x: 0.5, y: 0.5}

@@ -70,12 +70,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f494ec70289099b4788651d5a89cf200, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  moveStat: 4
   currFace: 3
   tileLoc: {fileID: 0}
   group: 0
   playerOffset: {x: 0, y: 0.7, z: 0}
   moveQueue: []
   moveSpeed: 0
+  charSprite: {fileID: 0}
 --- !u!212 &212118843454504780
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -109,7 +111,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1379632937
   m_SortingLayer: 2
-  m_SortingOrder: 2
+  m_SortingOrder: 3
   m_Sprite: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0

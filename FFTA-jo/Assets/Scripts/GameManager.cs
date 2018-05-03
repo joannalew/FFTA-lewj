@@ -19,6 +19,7 @@ public class GameManager : MonoBehaviour {
     private SpriteRenderer cursorSprite;
 
     private Character player;
+    private List<Character> playerList = new List<Character>();
     private Tile playerTile = null;
 
     private Camera mainCamera;
@@ -41,16 +42,40 @@ public class GameManager : MonoBehaviour {
         cursorTop.transform.position += cursorOffset;
         cursorSprite = cursor.GetComponent<SpriteRenderer>();
 
-        playerTile = map[0];
-
-        player = ((GameObject)Instantiate(PrefabHolder.Instance.Player)).GetComponent<Character>(); 
-        player.transform.position = playerTile.transform.position + player.playerOffset;
-        player.tileLoc = playerTile;
+        setChars(0, 58, 0);
+        setChars(1, 71, 1);
+        setChars(2, 84, 0);
+        setChars(3, 85, 2);
+        setChars(4, 72, 0);
+        setChars(5, 59, 3);
     }
 
     // Update is called once per frame
     void Update () {
         Controls();
+    }
+
+    private void setChars(int playIndex, int mapIndex, int face)
+    {
+        playerTile = map[mapIndex];
+        player = ((GameObject)Instantiate(PrefabHolder.Instance.Player[playIndex])).GetComponent<Character>();
+        player.transform.position = playerTile.transform.position + player.playerOffset;
+        player.faceDir(face);
+        player.tileLoc = playerTile;
+        player.charSprite.sortingOrder = playerTile.sort + 3;
+        playerList.Add(player);
+    }
+
+    private void selectChar(Tile currTile)
+    {
+        foreach (Character chara in playerList)
+        {
+            if (chara.tileLoc == currTile)
+            {
+                player = chara;
+                playerTile = chara.tileLoc;
+            }
+        }
     }
 
     private void moveCursor(int direction)
@@ -63,11 +88,7 @@ public class GameManager : MonoBehaviour {
             cursorTop.transform.position = cursor.transform.position + cursorOffset;
 
             moveCamera(cursor.transform.position);
-
-            if (currTile.hasObj)
-                cursorSprite.sortingOrder = currTile.sort + 1;
-            else
-                cursorSprite.sortingOrder = currTile.sort + 1;
+            cursorSprite.sortingOrder = currTile.sort + 1;
         }
         else
             currTile = prevTile;
@@ -89,6 +110,9 @@ public class GameManager : MonoBehaviour {
             if (player.Move(map, playerTile, currTile))
                 playerTile = currTile;
         }
+
+        if (Input.GetKeyDown(KeyCode.S))
+            selectChar(currTile);
     }
 
     private void moveCamera(Vector3 target)

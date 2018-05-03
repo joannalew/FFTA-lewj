@@ -29,7 +29,7 @@ public static class XMLManager
             myTile.neighbors = new Tile[4] { null, null, null, null };
 
             myTile.occupied = int.Parse(tile.Element("occupy").Value);
-            myTile.sort = 3 * (250 - (myTile.row * 10 - myTile.col));
+            myTile.sort = 4 * (1000 - (myTile.row * 10 - myTile.col));       // 0 = tile, 1 = cursor, 2 = shadow, 3 = player
 
             // for A* pathfinding
             myTile.parent = null;

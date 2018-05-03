@@ -4,6 +4,7 @@ using System.Linq;
 using UnityEngine;
 
 public class Character : MonoBehaviour {
+    public int moveStat = 4;
 
     public int currFace = 3;
     public Tile tileLoc;
@@ -13,15 +14,23 @@ public class Character : MonoBehaviour {
     public List<Tile> moveQueue = new List<Tile>();
     public float moveSpeed;
     
-    private SpriteRenderer charSprite;
+    public SpriteRenderer charSprite;
     private Animator charAnimator;
+    private GameObject shadow;
 
     // Use this for initialization
-    void Start() {
+    void Awake()
+    {
         charSprite = GetComponent<SpriteRenderer>();
         charAnimator = GetComponent<Animator>();
         moveSpeed = 3.5f;
         group = 1;
+    }
+
+    void Start()
+    {
+        shadow = (GameObject)Instantiate(PrefabHolder.Instance.Shadow, tileLoc.transform.position, Quaternion.identity);
+        shadow.transform.parent = transform;
     }
 
     public bool Move(List<Tile> map, Tile currTile, Tile endTile)
@@ -75,7 +84,10 @@ public class Character : MonoBehaviour {
                 sqrRemaining = (transform.position - end).sqrMagnitude;
 
                 if (sqrRemaining < 0.4f)
-                    charSprite.sortingOrder = path[i].sort + 2;
+                {
+                    charSprite.sortingOrder = path[i].sort + 3;
+                    shadow.GetComponent<SpriteRenderer>().sortingOrder = path[i].sort + 2;
+                }
 
                 yield return null;
             }
@@ -92,33 +104,17 @@ public class Character : MonoBehaviour {
 
     private float lowJumpOffset(Tile currTile, int direction)
     {
-        if (direction == 0 || direction == 1)
-        {
-            float y = Mathf.Abs(transform.position.x - currTile.transform.position.x);
-            return -1.7f * y * y + 1.7f * y;
-        }
-        else
-        {
-            float y = Mathf.Abs(transform.position.x - currTile.transform.position.x);
-            return -1.7f * y * y + 1.7f * y;
-        }
+        float y = Mathf.Abs(transform.position.x - currTile.transform.position.x);
+        return -1.7f * y * y + 1.7f * y;
     }
 
     private float highJumpOffset(Tile currTile, int direction)
     {
-        if (direction == 0 || direction == 1)
-        {
-            float y = Mathf.Abs(transform.position.x - currTile.transform.position.x);
-            return -4f * y * y + 4f * y;
-        }
-        else
-        {
-            float y = Mathf.Abs(transform.position.x - currTile.transform.position.x);
-            return -4f * y * y + 4f * y;
-        }
+        float y = Mathf.Abs(transform.position.x - currTile.transform.position.x);
+        return -4f * y * y + 4f * y;
     }
 
-    private void faceDir(int dir)
+    public void faceDir(int dir)
     {
         if (((currFace == 0 || currFace == 3) && (dir == 1 || dir == 2)) || 
             ((currFace == 1 || currFace == 2) && (dir == 0 || dir == 3)))
