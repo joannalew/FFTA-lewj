@@ -10,9 +10,24 @@ using System.Xml.Linq;
 
 public static class XMLManager
 {
-    public static void LoadMap(List<Tile> map, GameObject mapObject)
+    public static void LoadMap(int level, List<Tile> map, GameObject mapObject)
     {
-        XDocument xmlDoc = XDocument.Load("Assets/Resources/lutia2.xml");
+        if (level == 1)
+            mapObject.GetComponent<SpriteRenderer>().sprite = AssetHolder.Instance.GizaMap;
+        else if (level == 2)
+            mapObject.GetComponent<SpriteRenderer>().sprite = AssetHolder.Instance.Lutia1Map;
+        else
+            mapObject.GetComponent<SpriteRenderer>().sprite = AssetHolder.Instance.Lutia2Map;
+
+        string filepath;
+        if (level == 1)
+            filepath = "Assets/Resources/giza1.xml";
+        else if (level == 2)
+            filepath = "Assets/Resources/lutia1.xml";
+        else
+            filepath = "Assets/Resources/lutia2.xml";
+
+        XDocument xmlDoc = XDocument.Load(filepath);
         IEnumerable<XElement> tiles = xmlDoc.Descendants("tile");
         int objectCount = 0;
 
@@ -46,14 +61,21 @@ public static class XMLManager
             if (myTile.hasObj)
             {
                 SpriteRenderer mySprite = myTile.GetComponent<SpriteRenderer>();
-                mySprite.sprite = AssetHolder.Instance.Lutia2MapObjects[objectCount];
+
+                if (level == 1)
+                    mySprite.sprite = AssetHolder.Instance.GizaMapObjects[objectCount];
+                else if (level == 2)
+                    mySprite.sprite = AssetHolder.Instance.Lutia1MapObjects[objectCount];
+                else
+                    mySprite.sprite = AssetHolder.Instance.Lutia2MapObjects[objectCount];
+
                 mySprite.sortingOrder = myTile.sort;
                 objectCount++;
             }
 
             map.Add(myTile);
         }
-
+        
         foreach (var tile in tiles)
         {
             int id = int.Parse(tile.Attribute("id").Value);

@@ -52,4 +52,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Tile: {fileID: 1207353631051896, guid: 47a45745128c5f043936da037d2f7636, type: 2}
-  Cursor: {fileID: 1726156114711678, guid: 7af28b19f92bf1448964d3fe37d27d4e, type: 2}
+  CursorBase: {fileID: 1875424656556766, guid: a67c231aa4714c144be51143e325a3b3, type: 2}
+  CursorTop: {fileID: 1769212660688602, guid: 613e9b7ce564ec2408dbef26c6b2be58, type: 2}
+  Shadow: {fileID: 1326574826678236, guid: 38fa2819032fa7b43bcb4a968d92a0f3, type: 2}
+  Player:
+  - {fileID: 1959828815471464, guid: 68025e38c038146468dcc9ba8d4bb433, type: 2}
+  - {fileID: 1789212262594978, guid: 76715e677c5b65e41a4b46eb375e16f5, type: 2}
+  - {fileID: 1175860146221716, guid: 04c838e18b3cec0449a076318ccb7cc8, type: 2}
+  - {fileID: 1603105685274564, guid: ba6c909c7d4fde949911a9bf9c8d9a18, type: 2}
+  - {fileID: 1788372884428204, guid: 754eee8bb70a1894b94294184e4b95fb, type: 2}
+  - {fileID: 1733087147993032, guid: 8748f86a03e84714b9a1da801b3d150b, type: 2}

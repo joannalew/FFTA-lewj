@@ -4,6 +4,11 @@ using UnityEngine;
 
 public class AssetHolder : MonoBehaviour {
 
+    public Sprite GizaMap;
+    public Sprite[] GizaMapObjects;
+    public Sprite Lutia1Map;
+    public Sprite[] Lutia1MapObjects;
+    public Sprite Lutia2Map;
     public Sprite[] Lutia2MapObjects;
 
     private static AssetHolder _instance;

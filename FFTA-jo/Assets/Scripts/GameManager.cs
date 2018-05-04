@@ -34,7 +34,7 @@ public class GameManager : MonoBehaviour {
 	
     private void Start()
     {
-        XMLManager.LoadMap(map, mapObject);
+        XMLManager.LoadMap(3, map, mapObject);
 
         currTile = map[0];
         cursor = (GameObject)Instantiate(PrefabHolder.Instance.CursorBase, currTile.transform.position, Quaternion.identity);
@@ -42,12 +42,12 @@ public class GameManager : MonoBehaviour {
         cursorTop.transform.position += cursorOffset;
         cursorSprite = cursor.GetComponent<SpriteRenderer>();
 
-        setChars(0, 58, 0);
-        setChars(1, 71, 1);
-        setChars(2, 84, 0);
-        setChars(3, 85, 2);
-        setChars(4, 72, 0);
-        setChars(5, 59, 3);
+        setChars(0, 0, 0);
+        setChars(1, 1, 1);
+        setChars(2, 2, 0);
+        setChars(3, 6, 2);
+        setChars(4, 7, 0);
+        setChars(5, 8, 3);
     }
 
     // Update is called once per frame
