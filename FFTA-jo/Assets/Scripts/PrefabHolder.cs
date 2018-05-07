@@ -8,6 +8,7 @@ public class PrefabHolder : MonoBehaviour {
     public GameObject CursorTop;
     public GameObject Shadow;
     public GameObject[] Player;
+    public GameObject[] Enemies;
 
 
     private static PrefabHolder _instance;
