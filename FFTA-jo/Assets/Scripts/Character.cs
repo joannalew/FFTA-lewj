@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using UnityEngine;
 
 public class Character : MonoBehaviour {
@@ -10,16 +11,15 @@ public class Character : MonoBehaviour {
     public Tile tileLoc;
     public int group;
 
-    public Vector3 playerOffset = new Vector3(0, 0.7f, 0);
+    public Vector3 charOffset = new Vector3(0, 0.7f, 0);
     public List<Tile> moveQueue = new List<Tile>();
     public float moveSpeed;
     
     public SpriteRenderer charSprite;
-    private Animator charAnimator;
-    private GameObject shadow;
+    protected Animator charAnimator;
+    protected GameObject shadow;                    // shadow transform movement needs fixing for high and low jumps
 
-    // Use this for initialization
-    void Awake()
+    protected virtual void Awake()
     {
         charSprite = GetComponent<SpriteRenderer>();
         charAnimator = GetComponent<Animator>();
@@ -27,16 +27,19 @@ public class Character : MonoBehaviour {
         group = 1;
     }
 
-    void Start()
+    protected virtual void Start()
     {
         shadow = (GameObject)Instantiate(PrefabHolder.Instance.Shadow, tileLoc.transform.position, Quaternion.identity);
         shadow.transform.parent = transform;
     }
 
+    // Move the character from the current tile to another tile
     public bool Move(List<Tile> map, Tile currTile, Tile endTile)
     {
-        if (endTile.occupied == 0 || endTile.occupied == group)
+        if (endTile.occupied == 0)
         {
+            currTile.occupied = 0;
+            endTile.occupied = group;
             moveQueue = Astar(map, currTile, endTile);
             StartCoroutine(SmoothMove(moveQueue));
             return true;
@@ -44,17 +47,20 @@ public class Character : MonoBehaviour {
         return false;
     }
 
-    private IEnumerator SmoothMove(List<Tile> path)
+    // Moves the character sprite along the given Tile path
+    protected IEnumerator SmoothMove(List<Tile> path)
     {
         for (int i = 0; i < path.Count; i++)
         {
-            Vector3 end = path[i].transform.position + playerOffset;
+            Vector3 end = path[i].transform.position + charOffset;
             float sqrRemaining = (transform.position - end).sqrMagnitude;
             float moveOffset = 0f;
 
+            // face the proper direction to move to next tile
             int newDir = getDir(tileLoc, path[i]);
             faceDir(newDir);
 
+            // calculate height difference, and choose appropriate low/high jump animation
             int heightDiff = (path[i].height > tileLoc.height) ? path[i].height - tileLoc.height : tileLoc.height - path[i].height;
             if (heightDiff == 1)
             {
@@ -72,7 +78,8 @@ public class Character : MonoBehaviour {
                 else if (newDir == 2 || newDir == 3)
                     charAnimator.SetBool("marchHighJumpF", true);
             }
-             
+            
+            // move until the sprite is at the final destination
             while (sqrRemaining > float.Epsilon)
             {
                 if (heightDiff == 1)
@@ -92,6 +99,7 @@ public class Character : MonoBehaviour {
                 yield return null;
             }
 
+            // change the sprite back to idle walking animation
             resetAnim(charAnimator);
             if (newDir == 0 || newDir == 1)
                 charAnimator.SetBool("marchWalkB", true);
@@ -102,18 +110,22 @@ public class Character : MonoBehaviour {
         }
     }
 
-    private float lowJumpOffset(Tile currTile, int direction)
+    // Parabolic movement for low jump (height different = 1)
+    protected float lowJumpOffset(Tile currTile, int direction)
     {
         float y = Mathf.Abs(transform.position.x - currTile.transform.position.x);
         return -1.7f * y * y + 1.7f * y;
     }
 
-    private float highJumpOffset(Tile currTile, int direction)
+    // Parabolic movement for high jump (height difference >= 2)
+    protected float highJumpOffset(Tile currTile, int direction)
     {
         float y = Mathf.Abs(transform.position.x - currTile.transform.position.x);
         return -4f * y * y + 4f * y;
     }
 
+    // Have character face a certain direction by changing character Animation
+    // 0 = left, 1 = up, 2 = right, 3 = down
     public void faceDir(int dir)
     {
         if (((currFace == 0 || currFace == 3) && (dir == 1 || dir == 2)) || 
@@ -136,7 +148,9 @@ public class Character : MonoBehaviour {
         }
     }
 
-    private int getDir(Tile start, Tile end)
+    // Returns the direction the character is currently facing
+    // 0 = left, 1 = up, 2 = right, 3 = down
+    protected int getDir(Tile start, Tile end)
     {
         for(int i = 0; i < 4; i++)
         {
@@ -147,7 +161,8 @@ public class Character : MonoBehaviour {
         return -1;
     }
 
-    private void resetAnim(Animator anim)
+    // Reset Character Animation back to default state (walking, front)
+    protected void resetAnim(Animator anim)
     {
         foreach (AnimatorControllerParameter param in anim.parameters)
         {
@@ -156,7 +171,60 @@ public class Character : MonoBehaviour {
         }
     }
 
-    private List<Tile> Astar(List<Tile> map, Tile start, Tile end)
+    // Return list of Tiles to highlight for Move
+    public List<Tile> AstarGlow(List<Tile> map)
+    {
+        List<Tile> poss = allMoves(map);
+        List<Tile> res = new List<Tile>();
+        
+        foreach (Tile tile in poss)
+        {
+            List<Tile> path = Astar(map, tileLoc, tile);
+            if (path != null)
+                if (path.Count <= moveStat + 1)
+                    res.Add(tile);
+        }
+
+        return res;
+    }
+
+    // Return list of all Tiles that are within "moveStat" steps away from current character location
+    // Used with Astar to generate which Tiles are moveable and should be highlighted
+    protected List<Tile> allMoves(List<Tile> map)
+    {
+        List<Tile> open = new List<Tile>();
+        List<Tile> closed = new List<Tile>();
+        Tile[] neighbors = new Tile[4] { null, null, null, null };
+
+        Tile current = tileLoc;
+        open.Add(tileLoc);
+
+        for (int i = 0; i <= moveStat; i++)
+        {
+            int count = open.Count;
+            for (int j = 0; j < count; j++)
+            {
+                current = open[0];
+                open.Remove(current);
+                closed.Add(current);
+                neighbors = current.neighbors;
+
+                foreach (Tile tile in neighbors)
+                {
+                    if (tile)
+                        if (!open.Contains(tile) && !closed.Contains(tile))
+                            open.Add(tile);
+                }
+            }
+
+        }
+
+        return closed;
+    }
+
+    // Basic Astar algorithm
+    // Returns path (list of Tiles) from one Tile to another; null if no path available
+    protected List<Tile> Astar(List<Tile> map, Tile start, Tile end)
     {
         XMLManager.resetMap(map);
 
@@ -175,7 +243,7 @@ public class Character : MonoBehaviour {
             closed.Add(current);
             neighbors = current.neighbors;
 
-            foreach(var tile in neighbors)
+            foreach (var tile in neighbors)
             {
                 if (tile)
                 {
@@ -206,5 +274,13 @@ public class Character : MonoBehaviour {
         res.Reverse();
 
         return res;
+    }
+
+    // set a Character parameter to another value
+    // (useful if not all parameters public)
+    public void setStat<T>(string statName, T value)
+    {
+        FieldInfo field = GetType().GetField(statName);
+        field.SetValue(this, value);
     }
 }

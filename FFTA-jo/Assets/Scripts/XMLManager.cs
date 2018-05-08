@@ -12,6 +12,7 @@ public static class XMLManager
 {
     public static void LoadMap(int level, List<Tile> map, GameObject mapObject)
     {
+        // map objects according to which level is being generated
         if (level == 1)
             mapObject.GetComponent<SpriteRenderer>().sprite = AssetHolder.Instance.GizaMap;
         else if (level == 2)
@@ -19,6 +20,7 @@ public static class XMLManager
         else
             mapObject.GetComponent<SpriteRenderer>().sprite = AssetHolder.Instance.Lutia2Map;
 
+        // XML filepath according to which level is being generated
         string filepath;
         if (level == 1)
             filepath = "Assets/Resources/giza1.xml";
@@ -40,15 +42,14 @@ public static class XMLManager
             myTile.height = int.Parse(tile.Element("height").Value);
             myTile.row = int.Parse(tile.Element("row").Value);
             myTile.col = int.Parse(tile.Element("column").Value);
-            myTile.hasObj = int.Parse(tile.Element("object").Value) != 0;
+            myTile.hasObj = int.Parse(tile.Element("object").Value) != 0;       // for generating map objects below
             myTile.neighbors = new Tile[4] { null, null, null, null };
 
+            // 0 = not occupied, 1 = player, 2 = enemy, 3 = map object (tree, rock)
             myTile.occupied = int.Parse(tile.Element("occupy").Value);
-            myTile.sort = 4 * (1000 - (myTile.row * 10 - myTile.col));       // 0 = tile, 1 = cursor, 2 = shadow, 3 = player
-
-            // for A* pathfinding
-            myTile.parent = null;
-            myTile.cost = -1;
+            
+            // 0 = tile, 1 = highlight, 2 = cursor & shadow, 3 = player
+            myTile.sort = 4 * (1000 - (myTile.row * 10 - myTile.col));
 
             // actual position in Unity
             float x = (myTile.row + myTile.col) * 1.0f;
@@ -57,7 +58,7 @@ public static class XMLManager
             myTile.transform.position = new Vector3(x, y, z);
             myTile.transform.parent = mapObject.transform;
 
-            // subsprite rendering
+            // map objects (rock, tree) rendering
             if (myTile.hasObj)
             {
                 SpriteRenderer mySprite = myTile.GetComponent<SpriteRenderer>();
@@ -73,9 +74,14 @@ public static class XMLManager
                 objectCount++;
             }
 
+            // set tile highlight sorting order
+            SpriteRenderer tileHL = myTile.transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>();
+            tileHL.sortingOrder = myTile.sort + 1;
+
             map.Add(myTile);
         }
         
+        // set neighbors for each tile; null if no neighbor
         foreach (var tile in tiles)
         {
             int id = int.Parse(tile.Attribute("id").Value);
@@ -94,6 +100,8 @@ public static class XMLManager
         }
     }
 
+    // for a* algorithm
+    // reset the "cost" and "parent" each time a* is called
     public static void resetMap(List<Tile> map)
     {
         foreach (var tile in map)

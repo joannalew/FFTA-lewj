@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 4837153383985218}
   - component: {fileID: 212839019900057518}
   - component: {fileID: 95514269777173982}
-  - component: {fileID: 114063883265689062}
+  - component: {fileID: 114147571044997224}
   m_Layer: 0
   m_Name: GoblinBlue
   m_TagString: Untagged
@@ -59,7 +59,7 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
---- !u!114 &114063883265689062
+--- !u!114 &114147571044997224
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -67,7 +67,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1746089835876104}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f494ec70289099b4788651d5a89cf200, type: 3}
+  m_Script: {fileID: 11500000, guid: 69ca9bc2bfc3de44cae894bf8dc1f973, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   moveStat: 4
