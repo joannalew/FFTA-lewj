@@ -26,9 +26,13 @@ public class GameManager : MonoBehaviour {
     private List<Enemy> enemyList = new List<Enemy>();
     private Tile enemyTile = null;
 
+    public Turn turn = new Turn();
+
     private Camera mainCamera;
 
-	private void Awake ()
+    int index = -1;
+
+    private void Awake ()
     {
         Instance = this;
         mainCamera = Camera.main;
@@ -54,11 +58,11 @@ public class GameManager : MonoBehaviour {
             XMLManager.LoadMap(1, map, mapObject);
 
             // set cursor at (0, 0); down from viera
-            currTile = map[0];
-            cursor = (GameObject)Instantiate(PrefabHolder.Instance.CursorBase, currTile.transform.position, Quaternion.identity);
-            cursorTop = (GameObject)Instantiate(PrefabHolder.Instance.CursorTop, currTile.transform.position, Quaternion.identity);
-            cursorTop.transform.position += cursorOffset;
-            cursorSprite = cursor.GetComponent<SpriteRenderer>();
+            //currTile = map[0];
+            //cursor = (GameObject)Instantiate(PrefabHolder.Instance.CursorBase, currTile.transform.position, Quaternion.identity);
+            //cursorTop = (GameObject)Instantiate(PrefabHolder.Instance.CursorTop, currTile.transform.position, Quaternion.identity);
+            //cursorTop.transform.position += cursorOffset;
+            //cursorSprite = cursor.GetComponent<SpriteRenderer>();
 
             setEnems(0, 19, 0);         // fairy,       (1, 9), facing left
             setEnems(1, 47, 0);         // blue goblin, (4, 7)
@@ -72,6 +76,13 @@ public class GameManager : MonoBehaviour {
             setChars(4, 1, 2);          // white mage,  (0, 1)
             setChars(5, 10, 2);         // archer,      (1, 0)
             setChars(0, 22, 2);         // marche,      (2, 2)
+
+            //set cursor over playerList[0]
+            currTile = playerList[0].tileLoc;
+            cursor = (GameObject)Instantiate(PrefabHolder.Instance.CursorBase, currTile.transform.position, Quaternion.identity);
+            cursorTop = (GameObject)Instantiate(PrefabHolder.Instance.CursorTop, currTile.transform.position, Quaternion.identity);
+            cursorTop.transform.position += cursorOffset;
+            cursorSprite = cursor.GetComponent<SpriteRenderer>();
         }
         else if (level == 2)
         {
@@ -155,7 +166,21 @@ public class GameManager : MonoBehaviour {
     }
 
     // select the character at the current tile
-    private void selectChar(Tile currTile)
+    private void selectChar()
+    {
+        index = (index + 1) % playerList.Count;
+        turn.Change(playerList[index]);
+        player = playerList[index]; ;
+        playerTile = playerList[index].tileLoc;
+        currTile = playerList[index].tileLoc;
+        cursor.transform.position = currTile.transform.position;
+        cursorTop.transform.position = cursor.transform.position + cursorOffset;
+        cursorSprite.sortingOrder = currTile.sort + 2;
+
+        moveCamera(currTile.transform.position);
+        //owner.ChangeState<CommandSelectionState>();
+    }
+    /*private void selectChar(Tile currTile)
     {
         foreach (Character chara in playerList)
         {
@@ -166,6 +191,7 @@ public class GameManager : MonoBehaviour {
             }
         }
     }
+    */
 
     // move the cursor one space in the given direction
     // 0 = left, 1 = up, 2 = right, 3 = down
@@ -218,7 +244,8 @@ public class GameManager : MonoBehaviour {
 
         // press "s" to select the character at the current tile (where cursor is)
         if (Input.GetKeyDown(KeyCode.S))
-            selectChar(currTile);
+            selectChar();
+        //    selectChar(currTile);
 
         // press "g" to cause tiles to glow blue (where character can move)
         // press "r" to disable tile glow
