@@ -6,6 +6,11 @@ using UnityEngine;
 
 public class Character : MonoBehaviour {
     public int moveStat = 4;
+    public int jumpStat = 4;
+    public int hpStat;
+    public int attackStat;
+    public int defenseStat;
+    public bool alive = true;
 
     public int currFace = 3;
     public Tile tileLoc;
@@ -221,6 +226,53 @@ public class Character : MonoBehaviour {
 
         return closed;
     }
+
+
+//returns list of spaces a character can move to - takes in to account friend, enemy, and object locations and jump stat
+    protected List<Tile> potentialSpacesToMoveTo(List<Tile> map, Character chara)
+    {
+        XMLManager.resetMap(map);
+
+        List<Tile> potentialSpaces = new List<Tile>();
+        Queue<Tile> toCheck = new Queue<Tile>();
+        Tile[] neighbors = new Tile[4] { null, null, null, null };
+        Tile start = chara.tileLoc;
+        Tile cur;
+
+        start.cost = 0;
+        toCheck.Enqueue(start);
+
+        while (toCheck.Count != 0)
+        {
+            cur = toCheck.Dequeue();
+            neighbors = cur.neighbors;
+
+            foreach (var tile in neighbors)
+            {
+                if (tile != null)
+                {
+                    if (tile.cost == -1 || (cur.cost + 1 < tile.cost))
+                        tile.cost = cur.cost + 1;
+                    //tile is added to list if it is in range depending on the character's move stat, is not occupied, is not already in the list, and is accessible based on character's jump stat
+                    if ((tile.cost <= chara.moveStat) && (tile.occupied == 0 || tile.occupied == group) &&
+                        !potentialSpaces.Contains(tile) && (Math.Abs(cur.height - tile.height) <= chara.jumpStat))
+                    {
+                        if (tile.occupied == group) //if space is occupied by character of same type, can't move there, but should still examine neighbors
+                            toCheck.Enqueue(tile);
+
+                        else
+                        {
+                            potentialSpaces.Add(tile);
+                            toCheck.Enqueue(tile);
+                        }
+                    }
+                }
+            }
+
+        }
+        return potentialSpaces;
+    }
+
 
     // Basic Astar algorithm
     // Returns path (list of Tiles) from one Tile to another; null if no path available
