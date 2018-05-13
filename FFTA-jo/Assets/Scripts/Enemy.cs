@@ -80,11 +80,16 @@ public class Enemy : Character {
     }
 
 
-
-    protected Character closestTarget(Character curChar, List<Tile> map, Character c1, Character c2)
+    //Edgar Mod
+    //protected Character closestTarget(Character curChar, List<Tile> map, Character c1, Character c2)
+    protected Player closestTarget(Enemy curChar, List<Tile> map, Player c1, Player c2)
     {
-        List<Tile> p1 = Astar(map, curChar.curLocation, c1.curLocation);
-        List<Tile> p2 = Astar(map, curChar.curLocation, c2.curLocation);
+        //Edgar Mod
+        //List<Tile> p1 = Astar(map, curChar.curLocation, c1.curLocation);
+        //List<Tile> p2 = Astar(map, curChar.curLocation, c2.curLocation);
+
+        List<Tile> p1 = Astar(map, curChar.tileLoc, c1.tileLoc);
+        List<Tile> p2 = Astar(map, curChar.tileLoc, c2.tileLoc);
 
         if (p1 == null && p2 == null)
             return null;

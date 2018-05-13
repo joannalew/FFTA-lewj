@@ -51,15 +51,20 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\Scripts\AbilityMenuEntry.cs" />
+     <Compile Include="Assets\Scripts\AbilityMenuPanelController.cs" />
      <Compile Include="Assets\Scripts\AnchorTests.cs" />
      <Compile Include="Assets\Scripts\AssetHolder.cs" />
      <Compile Include="Assets\Scripts\Character.cs" />
      <Compile Include="Assets\Scripts\Enemy.cs" />
      <Compile Include="Assets\Scripts\GameManager.cs" />
+     <Compile Include="Assets\Scripts\GameObjectPoolController.cs" />
      <Compile Include="Assets\Scripts\LayoutAnchor.cs" />
      <Compile Include="Assets\Scripts\Panel.cs" />
      <Compile Include="Assets\Scripts\PanelTests.cs" />
      <Compile Include="Assets\Scripts\Player.cs" />
+     <Compile Include="Assets\Scripts\Poolable.cs" />
+     <Compile Include="Assets\Scripts\PoolData.cs" />
      <Compile Include="Assets\Scripts\PrefabHolder.cs" />
      <Compile Include="Assets\Scripts\Tile.cs" />
      <Compile Include="Assets\Scripts\Turn.cs" />

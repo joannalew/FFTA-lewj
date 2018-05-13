@@ -27,6 +27,12 @@ public class GameManager : MonoBehaviour {
     private Tile enemyTile = null;
 
     public Turn turn = new Turn();
+    public AbilityMenuPanelController abilityMenuPanelController;
+    private string menuTitle;
+    private List<string> menuOptions;
+    public bool ConCam = false;
+    public bool MoveMap = false;
+    
 
     private Camera mainCamera;
 
@@ -49,6 +55,7 @@ public class GameManager : MonoBehaviour {
         Controls();
     }
 
+    #region LoadMap
     // Load map from XML; initiate cursor, enemies, and characters; set camera position
     // Character selected by default is Marche
     private void loadLevel(int level)
@@ -134,6 +141,7 @@ public class GameManager : MonoBehaviour {
 
         mainCamera.transform.position = new Vector3(currTile.transform.position.x, currTile.transform.position.y, -10);
     }
+    #endregion
 
     // create character on map
     // Character created is PrefabHolder->Player[playindex]
@@ -178,7 +186,7 @@ public class GameManager : MonoBehaviour {
         cursorSprite.sortingOrder = currTile.sort + 2;
 
         moveCamera(currTile.transform.position);
-        //owner.ChangeState<CommandSelectionState>();
+        LoadCommandMenu();
     }
     /*private void selectChar(Tile currTile)
     {
@@ -219,28 +227,60 @@ public class GameManager : MonoBehaviour {
         {
             if (tile.occupied == 0)
                 tile.tileHighlight(color);
+            if(color == 0)
+            {
+                playerTile.tileHighlight(color);
+            }
         }
     }
 
     // Keyboard Controls
     public void Controls()
-    { 
+    {
+        if (ConCam)
+        {
+            if (Input.GetKeyDown(KeyCode.UpArrow))
+                abilityMenuPanelController.Previous();
+            if (Input.GetKeyDown(KeyCode.DownArrow))
+                abilityMenuPanelController.Next();
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
+                ConfirmCommand();
+                ConCam = false;
+                MoveMap = true;
+                abilityMenuPanelController.Hide();
+            }
+        }
+
         // use arrow keys to move cursor around
-        if (Input.GetKeyDown(KeyCode.LeftArrow))
-            moveCursor(0);
-        if (Input.GetKeyDown(KeyCode.UpArrow))
-            moveCursor(1);
-        if (Input.GetKeyDown(KeyCode.RightArrow))
-            moveCursor(2);
-        if (Input.GetKeyDown(KeyCode.DownArrow))
-            moveCursor(3);
+        if (MoveMap)
+        {
+            if (Input.GetKeyDown(KeyCode.LeftArrow))
+                moveCursor(0);
+            if (Input.GetKeyDown(KeyCode.UpArrow))
+                moveCursor(1);
+            if (Input.GetKeyDown(KeyCode.RightArrow))
+                moveCursor(2);
+            if (Input.GetKeyDown(KeyCode.DownArrow))
+                moveCursor(3);
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
+                if (player.Move(map, playerTile, currTile))
+                {
+                    playerTile = currTile;
+                    MoveMap = false;
+                    glowTiles(map, 0);
+                }
+            }
+        }
 
         // press "z" to move selected character to another tile
-        if (Input.GetKeyDown(KeyCode.Z))
+        /*if (Input.GetKeyDown(KeyCode.Z))
         {
             if (player.Move(map, playerTile, currTile))
                 playerTile = currTile;
         }
+        */
 
         // press "s" to select the character at the current tile (where cursor is)
         if (Input.GetKeyDown(KeyCode.S))
@@ -249,8 +289,8 @@ public class GameManager : MonoBehaviour {
 
         // press "g" to cause tiles to glow blue (where character can move)
         // press "r" to disable tile glow
-        if (Input.GetKeyDown(KeyCode.G))
-            glowTiles(player.AstarGlow(map), 1);
+        //if (Input.GetKeyDown(KeyCode.G))
+        //    glowTiles(player.AstarGlow(map), 1);
         if (Input.GetKeyDown(KeyCode.R))
             glowTiles(map, 0);
     }
@@ -273,4 +313,54 @@ public class GameManager : MonoBehaviour {
             mainCamera.transform.position += Vector3.down;
     }
 
+    #region Command
+    private void LoadCommandMenu()
+    {
+        if (menuOptions == null)
+        {
+            menuTitle = "Commands";
+            menuOptions = new List<string>(3);
+            menuOptions.Add("Move");
+            menuOptions.Add("Action");
+            menuOptions.Add("Wait");
+        }
+
+        abilityMenuPanelController.Show(menuTitle, menuOptions);
+        abilityMenuPanelController.SetLocked(0, turn.hasCharMoved);
+        abilityMenuPanelController.SetLocked(1, turn.hasCharActed);
+        ConCam = true;
+    }
+
+
+    private void ConfirmCommand()
+    {
+        switch (abilityMenuPanelController.selection)
+        {
+            case 0: // Move
+                glowTiles(player.AstarGlow(map), 1);
+                break;
+            case 1: // Action
+                break;
+            case 2: // Wait
+                break;
+        }
+    }
+
+    private void CancelCommand()
+    {
+        if (turn.hasCharMoved && !turn.lockMove)
+        {
+            turn.UndoMove();
+            abilityMenuPanelController.SetLocked(0, false);
+            currTile = turn.actor.tileLoc;
+            cursor.transform.position = currTile.transform.position;
+            cursorTop.transform.position = cursor.transform.position + cursorOffset;
+            cursorSprite.sortingOrder = currTile.sort + 2;
+        }
+        else
+        {
+            //owner.ChangeState<ExploreState>();
+        }
+    }
+    #endregion
 }

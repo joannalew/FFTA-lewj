@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using UnityEngine;
+//Added by Edgar
+using System;
 
 public class Character : MonoBehaviour {
     public int moveStat = 4;
