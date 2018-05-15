@@ -1,0 +1,1722 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<mapXml xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<tile id="0">
+		<height>1</height>
+		<row>0</row>
+		<column>0</column>
+		<object>0</object>
+		<left>-9</left>
+		<up>10</up>
+		<right>1</right>
+		<down>-9</down>
+		<occupy>0</occupy>
+	</tile>
+	<tile id="1">
+		<height>1</height>
+		<row>0</row>
+		<column>1</column>
+		<object>0</object>
+		<left>0</left>
+		<up>11</up>
+		<right>2</right>
+		<down>-9</down>
+		<occupy>0</occupy>
+	</tile>
+	<tile id="2">
+		<height>1</height>
+		<row>0</row>
+		<column>2</column>
+		<object>0</object>
+		<left>1</left>
+		<up>12</up>
+		<right>3</right>
+		<down>-9</down>
+		<occupy>0</occupy>
+	</tile>
+	<tile id="3">
+		<height>2</height>
+		<row>0</row>
+		<column>3</column>
+		<object>1</object>
+		<left>2</left>
+		<up>13</up>
+		<right>4</right>
+		<down>-9</down>
+		<occupy>0</occupy>
+	</tile>
+	<tile id="4">
+		<height>2</height>
+		<row>0</row>
+		<column>4</column>
+		<object>0</object>
+		<left>3</left>
+		<up>14</up>
+		<right>5</right>
+		<down>-9</down>
+		<occupy>0</occupy>
+	</tile>
+	<tile id="5">
+		<height>2</height>
+		<row>0</row>
+		<column>5</column>
+		<object>0</object>
+		<left>4</left>
+		<up>15</up>
+		<right>6</right>
+		<down>-9</down>
+		<occupy>0</occupy>
+	</tile>
+	<tile id="6">
+		<height>2</height>
+		<row>0</row>
+		<column>6</column>
+		<object>0</object>
+		<left>5</left>
+		<up>16</up>
+		<right>7</right>
+		<down>-9</down>
+		<occupy>0</occupy>
+	</tile>
+	<tile id="7">
+		<height>2</height>
+		<row>0</row>
+		<column>7</column>
+		<object>0</object>
+		<left>6</left>
+		<up>17</up>
+		<right>8</right>
+		<down>-9</down>
+		<occupy>0</occupy>
+	</tile>
+	<tile id="8">
+		<height>2</height>
+		<row>0</row>
+		<column>8</column>
+		<object>0</object>
+		<left>7</left>
+		<up>18</up>
+		<right>9</right>
+		<down>-9</down>
+		<occupy>0</occupy>
+	</tile>
+	<tile id="9">
+		<height>2</height>
+		<row>0</row>
+		<column>9</column>
+		<object>0</object>
+		<left>8</left>
+		<up>19</up>
+		<right>-9</right>
+		<down>-9</down>
+		<occupy>0</occupy>
+	</tile>
+	
+	<tile id="10">
+		<height>1</height>
+		<row>1</row>
+		<column>0</column>
+		<object>0</object>
+		<left>-9</left>
+		<up>20</up>
+		<right>11</right>
+		<down>0</down>
+		<occupy>0</occupy>
+	</tile>
+	<tile id="11">
+		<height>1</height>
+		<row>1</row>
+		<column>1</column>
+		<object>0</object>
+		<left>10</left>
+		<up>21</up>
+		<right>12</right>
+		<down>1</down>
+		<occupy>0</occupy>
+	</tile>
+	<tile id="12">
+		<height>1</height>
+		<row>1</row>
+		<column>2</column>
+		<object>0</object>
+		<left>11</left>
+		<up>22</up>
+		<right>13</right>
+		<down>2</down>
+		<occupy>0</occupy>
+	</tile>
+	<tile id="13">
+		<height>2</height>
+		<row>1</row>
+		<column>3</column>
+		<object>1</object>
+		<left>12</left>
+		<up>23</up>
+		<right>14</right>
+		<down>3</down>
+		<occupy>0</occupy>
+	</tile>
+	<tile id="14">
+		<height>2</height>
+		<row>1</row>
+		<column>4</column>
+		<object>0</object>
+		<left>13</left>
+		<up>24</up>
+		<right>15</right>
+		<down>4</down>
+		<occupy>0</occupy>
+	</tile>
+	<tile id="15">
+		<height>2</height>
+		<row>1</row>
+		<column>5</column>
+		<object>0</object>
+		<left>14</left>
+		<up>25</up>
+		<right>16</right>
+		<down>5</down>
+		<occupy>0</occupy>
+	</tile>
+	<tile id="16">
+		<height>2</height>
+		<row>1</row>
+		<column>6</column>
+		<object>0</object>
+		<left>15</left>
+		<up>26</up>
+		<right>17</right>
+		<down>6</down>
+		<occupy>0</occupy>
+	</tile>
+	<tile id="17">
+		<height>2</height>
+		<row>1</row>
+		<column>7</column>
+		<object>0</object>
+		<left>16</left>
+		<up>27</up>
+		<right>18</right>
+		<down>7</down>
+		<occupy>0</occupy>
+	</tile>
+	<tile id="18">
+		<height>3</height>
+		<row>1</row>
+		<column>8</column>
+		<object>1</object>
+		<left>17</left>
+		<up>28</up>
+		<right>19</right>
+		<down>8</down>
+		<occupy>0</occupy>
+	</tile>
+	<tile id="19">
+		<height>3</height>
+		<row>1</row>
+		<column>9</column>
+		<object>0</object>
+		<left>18</left>
+		<up>29</up>
+		<right>-9</right>
+		<down>9</down>
+		<occupy>0</occupy>
+	</tile>
+	
+	<tile id="20">
+		<height>2</height>
+		<row>2</row>
+		<column>0</column>
+		<object>0</object>
+		<left>-9</left>
+		<up>30</up>
+		<right>21</right>
+		<down>10</down>
+		<occupy>0</occupy>
+	</tile>
+	<tile id="21">
+		<height>2</height>
+		<row>2</row>
+		<column>1</column>
+		<object>0</object>
+		<left>20</left>
+		<up>31</up>
+		<right>22</right>
+		<down>11</down>
+		<occupy>0</occupy>
+	</tile>
+	<tile id="22">
+		<height>2</height>
+		<row>2</row>
+		<column>2</column>
+		<object>0</object>
+		<left>21</left>
+		<up>32</up>
+		<right>23</right>
+		<down>12</down>
+		<occupy>0</occupy>
+	</tile>
+	<tile id="23">
+		<row>2</row>
+		<column>3</column>
+		<height>2</height>
+		<object>0</object>
+		<left>22</left>
+		<up>33</up>
+		<right>24</right>
+		<down>13</down>
+		<occupy>0</occupy>
+	</tile>
+	<tile id="24">
+		<row>2</row>
+		<column>4</column>
+		<height>2</height>
+		<object>0</object>
+		<left>23</left>
+		<up>34</up>
+		<right>25</right>
+		<down>14</down>
+		<occupy>0</occupy>
+	</tile>
+	<tile id="25">
+		<row>2</row>
+		<column>5</column>
+		<height>5</height>
+		<object>1</object>
+		<left>24</left>
+		<up>35</up>
+		<right>26</right>
+		<down>15</down>
+		<occupy>3</occupy>
+	</tile>
+	<tile id="26">
+		<row>2</row>
+		<column>6</column>
+		<height>2</height>
+		<object>0</object>
+		<left>25</left>
+		<up>36</up>
+		<right>27</right>
+		<down>16</down>
+		<occupy>0</occupy>
+	</tile>
+	<tile id="27">
+		<row>2</row>
+		<column>7</column>
+		<height>2</height>
+		<object>0</object>
+		<left>26</left>
+		<up>37</up>
+		<right>28</right>
+		<down>17</down>
+		<occupy>0</occupy>
+	</tile>
+	<tile id="28">
+		<row>2</row>
+		<column>8</column>
+		<height>2</height>
+		<object>0</object>
+		<left>27</left>
+		<up>38</up>
+		<right>29</right>
+		<down>18</down>
+		<occupy>0</occupy>
+	</tile>
+	<tile id="29">
+		<row>2</row>
+		<column>9</column>
+		<height>3</height>
+		<object>1</object>
+		<left>28</left>
+		<up>39</up>
+		<right>-9</right>
+		<down>19</down>
+		<occupy>0</occupy>
+	</tile>
+	
+	<tile id="30">
+		<row>3</row>
+		<column>0</column>
+		<height>3</height>
+		<object>0</object>
+		<left>-9</left>
+		<up>40</up>
+		<right>31</right>
+		<down>20</down>
+		<occupy>0</occupy>
+	</tile>
+	<tile id="31">
+		<row>3</row>
+		<column>1</column>
+		<height>2</height>
+		<object>0</object>
+		<left>30</left>
+		<up>41</up>
+		<right>32</right>
+		<down>21</down>
+		<occupy>0</occupy>
+	</tile>
+	<tile id="32">
+		<row>3</row>
+		<column>2</column>
+		<height>2</height>
+		<object>0</object>
+		<left>31</left>
+		<up>42</up>
+		<right>33</right>
+		<down>22</down>
+		<occupy>0</occupy>
+	</tile>
+	<tile id="33">
+		<row>3</row>
+		<column>3</column>
+		<height>2</height>
+		<object>0</object>
+		<left>32</left>
+		<up>43</up>
+		<right>34</right>
+		<down>23</down>
+		<occupy>0</occupy>
+	</tile>
+	<tile id="34">
+		<row>3</row>
+		<column>4</column>
+		<height>2</height>
+		<object>0</object>
+		<left>33</left>
+		<up>44</up>
+		<right>35</right>
+		<down>24</down>
+		<occupy>0</occupy>
+	</tile>
+	<tile id="35">
+		<row>3</row>
+		<column>5</column>
+		<height>2</height>
+		<object>0</object>
+		<left>34</left>
+		<up>45</up>
+		<right>36</right>
+		<down>25</down>
+		<occupy>0</occupy>
+	</tile>
+	<tile id="36">
+		<row>3</row>
+		<column>6</column>
+		<height>2</height>
+		<object>0</object>
+		<left>35</left>
+		<up>46</up>
+		<right>37</right>
+		<down>26</down>
+		<occupy>0</occupy>
+	</tile>
+	<tile id="37">
+		<row>3</row>
+		<column>7</column>
+		<height>2</height>
+		<object>0</object>
+		<left>36</left>
+		<up>47</up>
+		<right>38</right>
+		<down>27</down>
+		<occupy>0</occupy>
+	</tile>
+	<tile id="38">
+		<row>3</row>
+		<column>8</column>
+		<height>2</height>
+		<object>0</object>
+		<left>37</left>
+		<up>48</up>
+		<right>39</right>
+		<down>28</down>
+		<occupy>0</occupy>
+	</tile>
+	<tile id="39">
+		<row>3</row>
+		<column>9</column>
+		<height>3</height>
+		<object>1</object>
+		<left>38</left>
+		<up>49</up>
+		<right>-9</right>
+		<down>29</down>
+		<occupy>0</occupy>
+	</tile>
+	
+	<tile id="40">
+		<row>4</row>
+		<column>0</column>
+		<height>3</height>
+		<object>0</object>
+		<left>-9</left>
+		<up>50</up>
+		<right>41</right>
+		<down>30</down>
+		<occupy>0</occupy>
+	</tile>
+	<tile id="41">
+		<row>4</row>
+		<column>1</column>
+		<height>2</height>
+		<object>0</object>
+		<left>40</left>
+		<up>51</up>
+		<right>42</right>
+		<down>31</down>
+		<occupy>0</occupy>
+	</tile>
+	<tile id="42">
+		<row>4</row>
+		<column>2</column>
+		<height>2</height>
+		<object>0</object>
+		<left>41</left>
+		<up>52</up>
+		<right>43</right>
+		<down>32</down>
+		<occupy>0</occupy>
+	</tile>
+	<tile id="43">
+		<row>4</row>
+		<column>3</column>
+		<height>2</height>
+		<object>0</object>
+		<left>42</left>
+		<up>53</up>
+		<right>44</right>
+		<down>33</down>
+		<occupy>0</occupy>
+	</tile>
+	<tile id="44">
+		<row>4</row>
+		<column>4</column>
+		<height>2</height>
+		<object>0</object>
+		<left>43</left>
+		<up>54</up>
+		<right>45</right>
+		<down>34</down>
+		<occupy>0</occupy>
+	</tile>
+	<tile id="45">
+		<row>4</row>
+		<column>5</column>
+		<height>2</height>
+		<object>0</object>
+		<left>44</left>
+		<up>55</up>
+		<right>46</right>
+		<down>35</down>
+		<occupy>0</occupy>
+	</tile>
+	<tile id="46">
+		<row>4</row>
+		<column>6</column>
+		<height>2</height>
+		<object>0</object>
+		<left>45</left>
+		<up>56</up>
+		<right>47</right>
+		<down>36</down>
+		<occupy>0</occupy>
+	</tile>
+	<tile id="47">
+		<row>4</row>
+		<column>7</column>
+		<height>2</height>
+		<object>0</object>
+		<left>46</left>
+		<up>57</up>
+		<right>48</right>
+		<down>37</down>
+		<occupy>0</occupy>
+	</tile>
+	<tile id="48">
+		<row>4</row>
+		<column>8</column>
+		<height>2</height>
+		<object>0</object>
+		<left>47</left>
+		<up>58</up>
+		<right>49</right>
+		<down>38</down>
+		<occupy>0</occupy>
+	</tile>
+	<tile id="49">
+		<row>4</row>
+		<column>9</column>
+		<height>2</height>
+		<object>0</object>
+		<left>48</left>
+		<up>59</up>
+		<right>-9</right>
+		<down>39</down>
+		<occupy>0</occupy>
+	</tile>
+	
+	<tile id="50">
+		<row>5</row>
+		<column>0</column>
+		<height>3</height>
+		<object>0</object>
+		<left>-9</left>
+		<up>61</up>
+		<right>51</right>
+		<down>40</down>
+		<occupy>0</occupy>
+	</tile>
+	<tile id="51">
+		<row>5</row>
+		<column>1</column>
+		<height>2</height>
+		<object>0</object>
+		<left>50</left>
+		<up>62</up>
+		<right>52</right>
+		<down>41</down>
+		<occupy>0</occupy>
+	</tile>
+	<tile id="52">
+		<row>5</row>
+		<column>2</column>
+		<height>2</height>
+		<object>0</object>
+		<left>51</left>
+		<up>63</up>
+		<right>53</right>
+		<down>42</down>
+		<occupy>0</occupy>
+	</tile>
+	<tile id="53">
+		<row>5</row>
+		<column>3</column>
+		<height>2</height>
+		<object>0</object>
+		<left>52</left>
+		<up>64</up>
+		<right>54</right>
+		<down>43</down>
+		<occupy>0</occupy>
+	</tile>
+	<tile id="54">
+		<row>5</row>
+		<column>4</column>
+		<height>2</height>
+		<object>0</object>
+		<left>53</left>
+		<up>65</up>
+		<right>55</right>
+		<down>44</down>
+		<occupy>0</occupy>
+	</tile>
+	<tile id="55">
+		<row>5</row>
+		<column>5</column>
+		<height>2</height>
+		<object>0</object>
+		<left>54</left>
+		<up>66</up>
+		<right>56</right>
+		<down>45</down>
+		<occupy>0</occupy>
+	</tile>
+	<tile id="56">
+		<row>5</row>
+		<column>6</column>
+		<height>2</height>
+		<object>0</object>
+		<left>55</left>
+		<up>67</up>
+		<right>57</right>
+		<down>46</down>
+		<occupy>0</occupy>
+	</tile>
+	<tile id="57">
+		<row>5</row>
+		<column>7</column>
+		<height>2</height>
+		<object>0</object>
+		<left>56</left>
+		<up>68</up>
+		<right>58</right>
+		<down>47</down>
+		<occupy>0</occupy>
+	</tile>
+	<tile id="58">
+		<row>5</row>
+		<column>8</column>
+		<height>2</height>
+		<object>0</object>
+		<left>57</left>
+		<up>69</up>
+		<right>59</right>
+		<down>48</down>
+		<occupy>0</occupy>
+	</tile>
+	<tile id="59">
+		<row>5</row>
+		<column>9</column>
+		<height>2</height>
+		<object>0</object>
+		<left>58</left>
+		<up>70</up>
+		<right>60</right>
+		<down>49</down>
+		<occupy>0</occupy>
+	</tile>
+	<tile id="60">
+		<row>5</row>
+		<column>10</column>
+		<height>2</height>
+		<object>0</object>
+		<left>59</left>
+		<up>71</up>
+		<right>-9</right>
+		<down>-9</down>
+		<occupy>0</occupy>
+	</tile>
+	
+	<tile id="61">
+		<row>6</row>
+		<column>0</column>
+		<height>3</height>
+		<object>0</object>
+		<left>-9</left>
+		<up>72</up>
+		<right>62</right>
+		<down>50</down>
+		<occupy>0</occupy>
+	</tile>
+	<tile id="62">
+		<row>6</row>
+		<column>1</column>
+		<height>3</height>
+		<object>0</object>
+		<left>61</left>
+		<up>73</up>
+		<right>63</right>
+		<down>51</down>
+		<occupy>0</occupy>
+	</tile>
+	<tile id="63">
+		<row>6</row>
+		<column>2</column>
+		<height>2</height>
+		<object>0</object>
+		<left>62</left>
+		<up>74</up>
+		<right>64</right>
+		<down>52</down>
+		<occupy>0</occupy>
+	</tile>
+	<tile id="64">
+		<row>6</row>
+		<column>3</column>
+		<height>2</height>
+		<object>0</object>
+		<left>63</left>
+		<up>75</up>
+		<right>65</right>
+		<down>53</down>
+		<occupy>0</occupy>
+	</tile>
+	<tile id="65">
+		<row>6</row>
+		<column>4</column>
+		<height>2</height>
+		<object>0</object>
+		<left>64</left>
+		<up>76</up>
+		<right>66</right>
+		<down>54</down>
+		<occupy>0</occupy>
+	</tile>
+	<tile id="66">
+		<row>6</row>
+		<column>5</column>
+		<height>2</height>
+		<object>0</object>
+		<left>65</left>
+		<up>77</up>
+		<right>67</right>
+		<down>55</down>
+		<occupy>0</occupy>
+	</tile>
+	<tile id="67">
+		<row>6</row>
+		<column>6</column>
+		<height>2</height>
+		<object>0</object>
+		<left>66</left>
+		<up>78</up>
+		<right>68</right>
+		<down>56</down>
+		<occupy>0</occupy>
+	</tile>
+	<tile id="68">
+		<row>6</row>
+		<column>7</column>
+		<height>2</height>
+		<object>0</object>
+		<left>67</left>
+		<up>79</up>
+		<right>69</right>
+		<down>57</down>
+		<occupy>0</occupy>
+	</tile>
+	<tile id="69">
+		<row>6</row>
+		<column>8</column>
+		<height>2</height>
+		<object>0</object>
+		<left>68</left>
+		<up>80</up>
+		<right>70</right>
+		<down>58</down>
+		<occupy>0</occupy>
+	</tile>
+	<tile id="70">
+		<row>6</row>
+		<column>9</column>
+		<height>2</height>
+		<object>0</object>
+		<left>69</left>
+		<up>81</up>
+		<right>71</right>
+		<down>59</down>
+		<occupy>0</occupy>
+	</tile>
+	<tile id="71">
+		<row>6</row>
+		<column>10</column>
+		<height>2</height>
+		<object>0</object>
+		<left>70</left>
+		<up>82</up>
+		<right>-9</right>
+		<down>60</down>
+		<occupy>0</occupy>
+	</tile>
+	
+	<tile id="72">
+		<row>7</row>
+		<column>0</column>
+		<height>3</height>
+		<object>0</object>
+		<left>-9</left>
+		<up>-9</up>
+		<right>73</right>
+		<down>61</down>
+		<occupy>0</occupy>
+	</tile>
+	<tile id="73">
+		<row>7</row>
+		<column>1</column>
+		<height>3</height>
+		<object>0</object>
+		<left>72</left>
+		<up>-9</up>
+		<right>74</right>
+		<down>62</down>
+		<occupy>0</occupy>
+	</tile>
+	<tile id="74">
+		<row>7</row>
+		<column>2</column>
+		<height>3</height>
+		<object>0</object>
+		<left>73</left>
+		<up>-9</up>
+		<right>75</right>
+		<down>63</down>
+		<occupy>0</occupy>
+	</tile>
+	<tile id="75">
+		<row>7</row>
+		<column>3</column>
+		<height>3</height>
+		<object>0</object>
+		<left>74</left>
+		<up>-9</up>
+		<right>76</right>
+		<down>64</down>
+		<occupy>0</occupy>
+	</tile>
+	<tile id="76">
+		<row>7</row>
+		<column>4</column>
+		<height>6</height>
+		<object>1</object>
+		<left>75</left>
+		<up>85</up>
+		<right>77</right>
+		<down>65</down>
+		<occupy>3</occupy>
+	</tile>
+	<tile id="77">
+		<row>7</row>
+		<column>5</column>
+		<height>3</height>
+		<object>0</object>
+		<left>76</left>
+		<up>86</up>
+		<right>78</right>
+		<down>66</down>
+		<occupy>0</occupy>
+	</tile>
+	<tile id="78">
+		<row>7</row>
+		<column>6</column>
+		<height>2</height>
+		<object>0</object>
+		<left>77</left>
+		<up>87</up>
+		<right>79</right>
+		<down>67</down>
+		<occupy>0</occupy>
+	</tile>
+	<tile id="79">
+		<row>7</row>
+		<column>7</column>
+		<height>2</height>
+		<object>0</object>
+		<left>78</left>
+		<up>88</up>
+		<right>80</right>
+		<down>68</down>
+		<occupy>0</occupy>
+	</tile>
+	<tile id="80">
+		<row>7</row>
+		<column>8</column>
+		<height>2</height>
+		<object>0</object>
+		<left>79</left>
+		<up>89</up>
+		<right>81</right>
+		<down>69</down>
+		<occupy>0</occupy>
+	</tile>
+	<tile id="81">
+		<row>7</row>
+		<column>9</column>
+		<height>2</height>
+		<object>0</object>
+		<left>80</left>
+		<up>90</up>
+		<right>82</right>
+		<down>70</down>
+		<occupy>0</occupy>
+	</tile>
+	<tile id="82">
+		<row>7</row>
+		<column>10</column>
+		<height>2</height>
+		<object>0</object>
+		<left>81</left>
+		<up>91</up>
+		<right>83</right>
+		<down>71</down>
+		<occupy>0</occupy>
+	</tile>
+	<tile id="83">
+		<row>7</row>
+		<column>11</column>
+		<height>3</height>
+		<object>1</object>
+		<left>82</left>
+		<up>92</up>
+		<right>84</right>
+		<down>-9</down>
+		<occupy>0</occupy>
+	</tile>
+	<tile id="84">
+		<row>7</row>
+		<column>12</column>
+		<height>3</height>
+		<object>0</object>
+		<left>83</left>
+		<up>93</up>
+		<right>-9</right>
+		<down>-9</down>
+		<occupy>0</occupy>
+	</tile>
+	
+	<tile id="85">
+		<row>8</row>
+		<column>4</column>
+		<height>3</height>
+		<object>0</object>
+		<left>-9</left>
+		<up>94</up>
+		<right>86</right>
+		<down>76</down>
+		<occupy>0</occupy>
+	</tile>
+	<tile id="86">
+		<row>8</row>
+		<column>5</column>
+		<height>3</height>
+		<object>0</object>
+		<left>85</left>
+		<up>95</up>
+		<right>87</right>
+		<down>77</down>
+		<occupy>0</occupy>
+	</tile>
+	<tile id="87">
+		<row>8</row>
+		<column>6</column>
+		<height>3</height>
+		<object>1</object>
+		<left>86</left>
+		<up>96</up>
+		<right>88</right>
+		<down>78</down>
+		<occupy>3</occupy>
+	</tile>
+	<tile id="88">
+		<row>8</row>
+		<column>7</column>
+		<height>2</height>
+		<object>0</object>
+		<left>87</left>
+		<up>97</up>
+		<right>89</right>
+		<down>79</down>
+		<occupy>0</occupy>
+	</tile>
+	<tile id="89">
+		<row>8</row>
+		<column>8</column>
+		<height>2</height>
+		<object>0</object>
+		<left>88</left>
+		<up>98</up>
+		<right>90</right>
+		<down>80</down>
+		<occupy>0</occupy>
+	</tile>
+	<tile id="90">
+		<row>8</row>
+		<column>9</column>
+		<height>3</height>
+		<object>1</object>
+		<left>89</left>
+		<up>99</up>
+		<right>91</right>
+		<down>81</down>
+		<occupy>0</occupy>
+	</tile>
+	<tile id="91">
+		<row>8</row>
+		<column>10</column>
+		<height>3</height>
+		<object>0</object>
+		<left>90</left>
+		<up>100</up>
+		<right>92</right>
+		<down>82</down>
+		<occupy>0</occupy>
+	</tile>
+	<tile id="92">
+		<row>8</row>
+		<column>11</column>
+		<height>3</height>
+		<object>0</object>
+		<left>91</left>
+		<up>101</up>
+		<right>93</right>
+		<down>83</down>
+		<occupy>0</occupy>
+	</tile>
+	<tile id="93">
+		<row>8</row>
+		<column>12</column>
+		<height>3</height>
+		<object>0</object>
+		<left>92</left>
+		<up>102</up>
+		<right>-9</right>
+		<down>84</down>
+		<occupy>0</occupy>
+	</tile>
+	
+	<tile id="94">
+		<row>9</row>
+		<column>4</column>
+		<height>3</height>
+		<object>0</object>
+		<left>-9</left>
+		<up>-9</up>
+		<right>95</right>
+		<down>85</down>
+		<occupy>0</occupy>
+	</tile>
+	<tile id="95">
+		<row>9</row>
+		<column>5</column>
+		<height>3</height>
+		<object>0</object>
+		<left>94</left>
+		<up>103</up>
+		<right>96</right>
+		<down>86</down>
+		<occupy>0</occupy>
+	</tile>
+	<tile id="96">
+		<row>9</row>
+		<column>6</column>
+		<height>3</height>
+		<object>0</object>
+		<left>95</left>
+		<up>104</up>
+		<right>97</right>
+		<down>87</down>
+		<occupy>0</occupy>
+	</tile>
+	<tile id="97">
+		<row>9</row>
+		<column>7</column>
+		<height>3</height>
+		<object>0</object>
+		<left>96</left>
+		<up>105</up>
+		<right>98</right>
+		<down>88</down>
+		<occupy>0</occupy>
+	</tile>
+	<tile id="98">
+		<row>9</row>
+		<column>8</column>
+		<height>3</height>
+		<object>0</object>
+		<left>97</left>
+		<up>106</up>
+		<right>99</right>
+		<down>89</down>
+		<occupy>0</occupy>
+	</tile>
+	<tile id="99">
+		<row>9</row>
+		<column>9</column>
+		<height>3</height>
+		<object>0</object>
+		<left>98</left>
+		<up>107</up>
+		<right>100</right>
+		<down>90</down>
+		<occupy>0</occupy>
+	</tile>
+	<tile id="100">
+		<row>9</row>
+		<column>10</column>
+		<height>3</height>
+		<object>0</object>
+		<left>99</left>
+		<up>108</up>
+		<right>101</right>
+		<down>91</down>
+		<occupy>0</occupy>
+	</tile>
+	<tile id="101">
+		<row>9</row>
+		<column>11</column>
+		<height>4</height>
+		<object>1</object>
+		<left>100</left>
+		<up>109</up>
+		<right>102</right>
+		<down>92</down>
+		<occupy>0</occupy>
+	</tile>
+	<tile id="102">
+		<row>9</row>
+		<column>12</column>
+		<height>4</height>
+		<object>0</object>
+		<left>101</left>
+		<up>110</up>
+		<right>-9</right>
+		<down>93</down>
+		<occupy>0</occupy>
+	</tile>
+	
+	<tile id="103">
+		<row>10</row>
+		<column>5</column>
+		<height>4</height>
+		<object>0</object>
+		<left>-9</left>
+		<up>113</up>
+		<right>104</right>
+		<down>95</down>
+		<occupy>0</occupy>
+	</tile>
+	<tile id="104">
+		<row>10</row>
+		<column>6</column>
+		<height>4</height>
+		<object>0</object>
+		<left>103</left>
+		<up>114</up>
+		<right>105</right>
+		<down>96</down>
+		<occupy>0</occupy>
+	</tile>
+	<tile id="105">
+		<row>10</row>
+		<column>7</column>
+		<height>3</height>
+		<object>0</object>
+		<left>104</left>
+		<up>115</up>
+		<right>106</right>
+		<down>97</down>
+		<occupy>0</occupy>
+	</tile>
+	<tile id="106">
+		<row>10</row>
+		<column>8</column>
+		<height>3</height>
+		<object>0</object>
+		<left>105</left>
+		<up>116</up>
+		<right>107</right>
+		<down>98</down>
+		<occupy>0</occupy>
+	</tile>
+	<tile id="107">
+		<row>10</row>
+		<column>9</column>
+		<height>3</height>
+		<object>0</object>
+		<left>106</left>
+		<up>117</up>
+		<right>108</right>
+		<down>99</down>
+		<occupy>0</occupy>
+	</tile>
+	<tile id="108">
+		<row>10</row>
+		<column>10</column>
+		<height>3</height>
+		<object>0</object>
+		<left>107</left>
+		<up>118</up>
+		<right>109</right>
+		<down>100</down>
+		<occupy>0</occupy>
+	</tile>
+	<tile id="109">
+		<row>10</row>
+		<column>11</column>
+		<height>4</height>
+		<object>1</object>
+		<left>108</left>
+		<up>119</up>
+		<right>110</right>
+		<down>101</down>
+		<occupy>0</occupy>
+	</tile>
+	<tile id="110">
+		<row>10</row>
+		<column>12</column>
+		<height>4</height>
+		<object>0</object>
+		<left>109</left>
+		<up>120</up>
+		<right>111</right>
+		<down>102</down>
+		<occupy>0</occupy>
+	</tile>
+	<tile id="111">
+		<row>10</row>
+		<column>13</column>
+		<height>4</height>
+		<object>0</object>
+		<left>110</left>
+		<up>121</up>
+		<right>112</right>
+		<down>-9</down>
+		<occupy>0</occupy>
+	</tile>
+	<tile id="112">
+		<row>10</row>
+		<column>14</column>
+		<height>4</height>
+		<object>0</object>
+		<left>111</left>
+		<up>122</up>
+		<right>-9</right>
+		<down>-9</down>
+		<occupy>0</occupy>
+	</tile>
+	
+	<tile id="113">
+		<row>11</row>
+		<column>5</column>
+		<height>4</height>
+		<object>0</object>
+		<left>-9</left>
+		<up>-9</up>
+		<right>114</right>
+		<down>103</down>
+		<occupy>0</occupy>
+	</tile>
+	<tile id="114">
+		<row>11</row>
+		<column>6</column>
+		<height>4</height>
+		<object>0</object>
+		<left>113</left>
+		<up>-9</up>
+		<right>115</right>
+		<down>104</down>
+		<occupy>0</occupy>
+	</tile>
+	<tile id="115">
+		<row>11</row>
+		<column>7</column>
+		<height>5</height>
+		<object>1</object>
+		<left>114</left>
+		<up>123</up>
+		<right>116</right>
+		<down>105</down>
+		<occupy>0</occupy>
+	</tile>
+	<tile id="116">
+		<row>11</row>
+		<column>8</column>
+		<height>5</height>
+		<object>0</object>
+		<left>115</left>
+		<up>124</up>
+		<right>117</right>
+		<down>106</down>
+		<occupy>0</occupy>
+	</tile>
+	<tile id="117">
+		<row>11</row>
+		<column>9</column>
+		<height>5</height>
+		<object>0</object>
+		<left>116</left>
+		<up>125</up>
+		<right>118</right>
+		<down>107</down>
+		<occupy>0</occupy>
+	</tile>
+	<tile id="118">
+		<row>11</row>
+		<column>10</column>
+		<height>5</height>
+		<object>0</object>
+		<left>117</left>
+		<up>126</up>
+		<right>119</right>
+		<down>108</down>
+		<occupy>0</occupy>
+	</tile>
+	<tile id="119">
+		<row>11</row>
+		<column>11</column>
+		<height>4</height>
+		<object>0</object>
+		<left>118</left>
+		<up>127</up>
+		<right>120</right>
+		<down>109</down>
+		<occupy>0</occupy>
+	</tile>
+	<tile id="120">
+		<row>11</row>
+		<column>12</column>
+		<height>4</height>
+		<object>0</object>
+		<left>119</left>
+		<up>128</up>
+		<right>121</right>
+		<down>110</down>
+		<occupy>0</occupy>
+	</tile>
+	<tile id="121">
+		<row>11</row>
+		<column>13</column>
+		<height>4</height>
+		<object>0</object>
+		<left>120</left>
+		<up>129</up>
+		<right>122</right>
+		<down>111</down>
+		<occupy>0</occupy>
+	</tile>
+	<tile id="122">
+		<row>11</row>
+		<column>14</column>
+		<height>5</height>
+		<object>1</object>
+		<left>121</left>
+		<up>130</up>
+		<right>-9</right>
+		<down>112</down>
+		<occupy>3</occupy>
+	</tile>
+	
+	<tile id="123">
+		<row>12</row>
+		<column>7</column>
+		<height>5</height>
+		<object>0</object>
+		<left>-9</left>
+		<up>131</up>
+		<right>124</right>
+		<down>115</down>
+		<occupy>0</occupy>
+	</tile>
+	<tile id="124">
+		<row>12</row>
+		<column>8</column>
+		<height>5</height>
+		<object>0</object>
+		<left>123</left>
+		<up>132</up>
+		<right>125</right>
+		<down>116</down>
+		<occupy>0</occupy>
+	</tile>
+	<tile id="125">
+		<row>12</row>
+		<column>9</column>
+		<height>5</height>
+		<object>0</object>
+		<left>124</left>
+		<up>133</up>
+		<right>126</right>
+		<down>117</down>
+		<occupy>0</occupy>
+	</tile>
+	<tile id="126">
+		<row>12</row>
+		<column>10</column>
+		<height>5</height>
+		<object>0</object>
+		<left>125</left>
+		<up>134</up>
+		<right>127</right>
+		<down>118</down>
+		<occupy>0</occupy>
+	</tile>
+	<tile id="127">
+		<row>12</row>
+		<column>11</column>
+		<height>5</height>
+		<object>0</object>
+		<left>126</left>
+		<up>135</up>
+		<right>128</right>
+		<down>119</down>
+		<occupy>0</occupy>
+	</tile>
+	<tile id="128">
+		<row>12</row>
+		<column>12</column>
+		<height>5</height>
+		<object>0</object>
+		<left>127</left>
+		<up>136</up>
+		<right>129</right>
+		<down>120</down>
+		<occupy>0</occupy>
+	</tile>
+	<tile id="129">
+		<row>12</row>
+		<column>13</column>
+		<height>4</height>
+		<object>0</object>
+		<left>128</left>
+		<up>137</up>
+		<right>130</right>
+		<down>121</down>
+		<occupy>0</occupy>
+	</tile>
+	<tile id="130">
+		<row>12</row>
+		<column>14</column>
+		<height>4</height>
+		<object>0</object>
+		<left>129</left>
+		<up>138</up>
+		<right>-9</right>
+		<down>122</down>
+		<occupy>0</occupy>
+	</tile>
+	
+	<tile id="131">
+		<row>13</row>
+		<column>7</column>
+		<height>5</height>
+		<object>0</object>
+		<left>-9</left>
+		<up>139</up>
+		<right>132</right>
+		<down>123</down>
+		<occupy>0</occupy>
+	</tile>
+	<tile id="132">
+		<row>13</row>
+		<column>8</column>
+		<height>5</height>
+		<object>0</object>
+		<left>131</left>
+		<up>140</up>
+		<right>133</right>
+		<down>124</down>
+		<occupy>0</occupy>
+	</tile>
+	<tile id="133">
+		<row>13</row>
+		<column>9</column>
+		<height>5</height>
+		<object>0</object>
+		<left>132</left>
+		<up>141</up>
+		<right>134</right>
+		<down>125</down>
+		<occupy>0</occupy>
+	</tile>
+	<tile id="134">
+		<row>13</row>
+		<column>10</column>
+		<height>8</height>
+		<object>1</object>
+		<left>133</left>
+		<up>142</up>
+		<right>135</right>
+		<down>126</down>
+		<occupy>3</occupy>
+	</tile>
+	<tile id="135">
+		<row>13</row>
+		<column>11</column>
+		<height>5</height>
+		<object>0</object>
+		<left>134</left>
+		<up>143</up>
+		<right>136</right>
+		<down>127</down>
+		<occupy>0</occupy>
+	</tile>
+	<tile id="136">
+		<row>13</row>
+		<column>12</column>
+		<height>5</height>
+		<object>0</object>
+		<left>135</left>
+		<up>144</up>
+		<right>137</right>
+		<down>128</down>
+		<occupy>0</occupy>
+	</tile>
+	<tile id="137">
+		<row>13</row>
+		<column>13</column>
+		<height>5</height>
+		<object>0</object>
+		<left>136</left>
+		<up>145</up>
+		<right>138</right>
+		<down>129</down>
+		<occupy>0</occupy>
+	</tile>
+	<tile id="138">
+		<row>13</row>
+		<column>14</column>
+		<height>4</height>
+		<object>0</object>
+		<left>137</left>
+		<up>146</up>
+		<right>-9</right>
+		<down>130</down>
+		<occupy>0</occupy>
+	</tile>
+	
+	<tile id="139">
+		<row>14</row>
+		<column>7</column>
+		<height>5</height>
+		<object>0</object>
+		<left>-9</left>
+		<up>147</up>
+		<right>140</right>
+		<down>131</down>
+		<occupy>0</occupy>
+	</tile>
+	<tile id="140">
+		<row>14</row>
+		<column>8</column>
+		<height>5</height>
+		<object>0</object>
+		<left>139</left>
+		<up>148</up>
+		<right>141</right>
+		<down>132</down>
+		<occupy>0</occupy>
+	</tile>
+	<tile id="141">
+		<row>14</row>
+		<column>9</column>
+		<height>5</height>
+		<object>0</object>
+		<left>140</left>
+		<up>149</up>
+		<right>142</right>
+		<down>133</down>
+		<occupy>0</occupy>
+	</tile>
+	<tile id="142">
+		<row>14</row>
+		<column>10</column>
+		<height>5</height>
+		<object>0</object>
+		<left>141</left>
+		<up>150</up>
+		<right>143</right>
+		<down>134</down>
+		<occupy>0</occupy>
+	</tile>
+	<tile id="143">
+		<row>14</row>
+		<column>11</column>
+		<height>5</height>
+		<object>0</object>
+		<left>142</left>
+		<up>151</up>
+		<right>144</right>
+		<down>135</down>
+		<occupy>0</occupy>
+	</tile>
+	<tile id="144">
+		<row>14</row>
+		<column>12</column>
+		<height>5</height>
+		<object>0</object>
+		<left>143</left>
+		<up>152</up>
+		<right>145</right>
+		<down>136</down>
+		<occupy>0</occupy>
+	</tile>
+	<tile id="145">
+		<row>14</row>
+		<column>13</column>
+		<height>5</height>
+		<object>0</object>
+		<left>144</left>
+		<up>153</up>
+		<right>146</right>
+		<down>137</down>
+		<occupy>0</occupy>
+	</tile>
+	<tile id="146">
+		<row>14</row>
+		<column>14</column>
+		<height>5</height>
+		<object>0</object>
+		<left>145</left>
+		<up>154</up>
+		<right>-9</right>
+		<down>138</down>
+		<occupy>0</occupy>
+	</tile>
+	<tile id="147">
+		<row>15</row>
+		<column>7</column>
+		<height>5</height>
+		<object>0</object>
+		<left>-9</left>
+		<up>-9</up>
+		<right>148</right>
+		<down>139</down>
+		<occupy>0</occupy>
+	</tile>
+	<tile id="148">
+		<row>15</row>
+		<column>8</column>
+		<height>5</height>
+		<object>0</object>
+		<left>147</left>
+		<up>-9</up>
+		<right>149</right>
+		<down>140</down>
+		<occupy>0</occupy>
+	</tile>
+	<tile id="149">
+		<row>15</row>
+		<column>9</column>
+		<height>5</height>
+		<object>0</object>
+		<left>148</left>
+		<up>-9</up>
+		<right>150</right>
+		<down>141</down>
+		<occupy>0</occupy>
+	</tile>
+	<tile id="150">
+		<row>15</row>
+		<column>10</column>
+		<height>5</height>
+		<object>0</object>
+		<left>149</left>
+		<up>-9</up>
+		<right>151</right>
+		<down>142</down>
+		<occupy>0</occupy>
+	</tile>
+	<tile id="151">
+		<row>15</row>
+		<column>11</column>
+		<height>5</height>
+		<object>0</object>
+		<left>150</left>
+		<up>-9</up>
+		<right>152</right>
+		<down>143</down>
+		<occupy>0</occupy>
+	</tile>
+	<tile id="152">
+		<row>15</row>
+		<column>12</column>
+		<height>5</height>
+		<object>0</object>
+		<left>151</left>
+		<up>-9</up>
+		<right>153</right>
+		<down>144</down>
+		<occupy>0</occupy>
+	</tile>
+	<tile id="153">
+		<row>15</row>
+		<column>13</column>
+		<height>5</height>
+		<object>0</object>
+		<left>152</left>
+		<up>-9</up>
+		<right>154</right>
+		<down>145</down>
+		<occupy>0</occupy>
+	</tile>
+	<tile id="154">
+		<row>15</row>
+		<column>14</column>
+		<height>5</height>
+		<object>0</object>
+		<left>153</left>
+		<up>-9</up>
+		<right>-9</right>
+		<down>146</down>
+		<occupy>0</occupy>
+	</tile>
+</mapXml>
