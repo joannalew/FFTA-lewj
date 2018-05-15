@@ -41,6 +41,7 @@ public class Tile : MonoBehaviour {
         }
         else if (color == 2)
         {
+            tileAnim.SetBool("tileBlue", false);
             tileAnim.SetBool("tileRed", true);
             glow = 2;
         }
@@ -52,11 +53,31 @@ public class Tile : MonoBehaviour {
         else
         {
             glow = 0;
-            foreach (AnimatorControllerParameter param in tileAnim.parameters)
-            {
-                if (param.type == AnimatorControllerParameterType.Bool)
-                    tileAnim.SetBool(param.name, false);
-            }
+            tileAnim.SetBool("tileBlue", false);
+            tileAnim.SetBool("tileRed", false);
+            tileAnim.SetBool("tileGreen", false);
         }
+    }
+
+    public Character getChar(List<Character> characters)
+    {
+        foreach (var actor in characters)
+        {
+            if (actor.tileLoc == this)
+                return actor;
+        }
+
+        return null;
+    }
+
+    public Enemy getEnem(List<Enemy> enemies)
+    {
+        foreach(var enemy in enemies)
+        {
+            if (enemy.tileLoc == this)
+                return enemy;
+        }
+
+        return null;
     }
 }

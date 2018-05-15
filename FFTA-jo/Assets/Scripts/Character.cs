@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
@@ -6,6 +7,12 @@ using UnityEngine;
 
 public class Character : MonoBehaviour {
     public int moveStat = 4;
+    public int jumpStat = 2;
+    public int hpStat = 25;
+    public int attackStat = 5;
+    public int atkRange = 1;
+    public int atkHeightLow = 1;
+    public int atkHeightHigh = -2;
 
     public int currFace = 3;
     public Tile tileLoc;
@@ -31,6 +38,54 @@ public class Character : MonoBehaviour {
     {
         shadow = (GameObject)Instantiate(PrefabHolder.Instance.Shadow, tileLoc.transform.position, Quaternion.identity);
         shadow.transform.parent = transform;
+    }
+    
+    public void Attack(Tile atkTile, List<Character> chars, List<Enemy> enems)
+    {
+        Character player = null;
+        Enemy enemy = null;
+
+        // face the proper direction to move to next tile
+        int newDir = getDir(tileLoc, atkTile);
+        faceDir(newDir);
+
+        if (atkTile.occupied == 1)
+        {
+            player = atkTile.getChar(chars);
+            player.hpStat -= attackStat;
+            if (currFace == 0 || currFace == 1)
+                charAnimator.SetTrigger("marchAttackB");
+            else
+                charAnimator.SetTrigger("marchAttackF");
+
+            if (player.currFace == 0 || player.currFace == 1)
+                player.GetComponent<Animator>().SetTrigger("marchHitB");
+            else
+                player.GetComponent<Animator>().SetTrigger("marchHitF");
+        }
+        else if (atkTile.occupied == 2)
+        {
+            enemy = atkTile.getEnem(enems);
+            enemy.hpStat -= attackStat;
+
+            if (currFace == 0 || currFace == 1)
+                charAnimator.SetTrigger("marchAttackB");
+            else
+                charAnimator.SetTrigger("marchAttackF");
+
+            if (enemy.currFace == 0 || enemy.currFace == 1)
+                enemy.GetComponent<Animator>().SetTrigger("marchHitB");
+            else
+                enemy.GetComponent<Animator>().SetTrigger("marchHitF");
+        }
+    }
+    
+    public void highlight(bool status)
+    {
+        if (status)
+            charSprite.color = new Color(0.5f, 0.5f, 0.5f, 1);
+        else
+            charSprite.color = new Color(1, 1, 1, 1);
     }
 
     // Move the character from the current tile to another tile
@@ -82,6 +137,8 @@ public class Character : MonoBehaviour {
             // move until the sprite is at the final destination
             while (sqrRemaining > float.Epsilon)
             {
+                path[path.Count - 1].tileHighlight(2);                  // highlight tile red while moving
+
                 if (heightDiff == 1)
                     moveOffset = lowJumpOffset(tileLoc, newDir);
                 else if (heightDiff >= 2)
@@ -107,6 +164,7 @@ public class Character : MonoBehaviour {
                 charAnimator.SetBool("marchWalkF", true);
                 
             tileLoc = path[i];
+            tileLoc.tileHighlight(0);
         }
     }
 
@@ -171,6 +229,40 @@ public class Character : MonoBehaviour {
         }
     }
 
+    // Return list of Tiles to highlight for attack
+    public List<Tile> allAttack(List<Tile> map)
+    {
+        List<Tile> open = new List<Tile>();
+        List<Tile> closed = new List<Tile>();
+        Tile[] neighbors = new Tile[4] { null, null, null, null };
+
+        Tile current = tileLoc;
+        open.Add(tileLoc);
+
+        for (int i = 0; i <= atkRange; i++)
+        {
+            int count = open.Count;
+            for (int j = 0; j < count; j++)
+            {
+                current = open[0];
+                open.Remove(current);
+                closed.Add(current);
+                neighbors = current.neighbors;
+
+                foreach (Tile tile in neighbors)
+                {
+                    if (tile)
+                        if (!open.Contains(tile) && !closed.Contains(tile) && tile.occupied != 3 && 
+                            (tile.height - current.height) <= atkHeightLow && (tile.height - current.height) >= atkHeightHigh)
+                            open.Add(tile);
+                }
+            }
+
+        }
+        closed.Remove(tileLoc);
+        return closed;
+    }
+
     // Return list of Tiles to highlight for Move
     public List<Tile> AstarGlow(List<Tile> map)
     {
@@ -212,13 +304,13 @@ public class Character : MonoBehaviour {
                 foreach (Tile tile in neighbors)
                 {
                     if (tile)
-                        if (!open.Contains(tile) && !closed.Contains(tile))
+                        if (!open.Contains(tile) && !closed.Contains(tile) && tile.occupied == 0)
                             open.Add(tile);
                 }
             }
 
         }
-
+        closed.Remove(tileLoc);
         return closed;
     }
 
@@ -247,7 +339,9 @@ public class Character : MonoBehaviour {
             {
                 if (tile)
                 {
-                    if (!closed.Contains(tile) && !open.Contains(tile) && (tile.occupied == group || tile.occupied == 0))
+                    if (!closed.Contains(tile) && !open.Contains(tile) &&           // if not already checked or checking
+                        (tile.occupied == group || tile.occupied == 0) &&           // if tile is passable (same group)
+                        (Math.Abs(tile.height - current.height) <= jumpStat))       // if tile is not too tall
                     {
                         tile.parent = current;
                         tile.cost = 1 + tile.parent.cost;

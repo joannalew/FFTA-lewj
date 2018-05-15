@@ -20,8 +20,8 @@ GameObject:
   m_Component:
   - component: {fileID: 4837153383985218}
   - component: {fileID: 212839019900057518}
-  - component: {fileID: 95514269777173982}
   - component: {fileID: 114147571044997224}
+  - component: {fileID: 95102367485950474}
   m_Layer: 0
   m_Name: GoblinBlue
   m_TagString: Untagged
@@ -42,7 +42,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!95 &95514269777173982
+--- !u!95 &95102367485950474
 Animator:
   serializedVersion: 3
   m_ObjectHideFlags: 1
@@ -71,10 +71,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveStat: 4
+  jumpStat: 2
+  hpStat: 25
+  attackStat: 5
   currFace: 3
   tileLoc: {fileID: 0}
   group: 0
-  playerOffset: {x: 0, y: 0.7, z: 0}
+  charOffset: {x: 0, y: 0.7, z: 0}
   moveQueue: []
   moveSpeed: 0
   charSprite: {fileID: 0}

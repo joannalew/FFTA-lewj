@@ -7,6 +7,11 @@ public class PrefabHolder : MonoBehaviour {
     public GameObject CursorBase;
     public GameObject CursorTop;
     public GameObject Shadow;
+
+    public GameObject battleUI;
+    public GameObject leftUI;
+    public GameObject rightUI;
+
     public GameObject[] Player;
     public GameObject[] Enemies;
 

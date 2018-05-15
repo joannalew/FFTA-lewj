@@ -3,14 +3,19 @@ using System.Collections.Generic;
 using System.Linq;
 using System.IO;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
-public class GameManager : MonoBehaviour {
-
+public class GameManager : MonoBehaviour
+{
     public static GameManager Instance;
 
+    // level selection 
+    public int mLevel = 1;
     public List<Tile> map = new List<Tile>();
     private GameObject mapObject;
 
+    // cursor
     private Tile prevTile = null;
     private Tile currTile = null;
     private GameObject cursor;
@@ -18,6 +23,7 @@ public class GameManager : MonoBehaviour {
     private Vector3 cursorOffset = new Vector3(0, 2.5f, 0);
     private SpriteRenderer cursorSprite;
 
+    // players & enemy
     private Character player;
     private List<Character> playerList = new List<Character>();
     private Tile playerTile = null;
@@ -26,22 +32,40 @@ public class GameManager : MonoBehaviour {
     private List<Enemy> enemyList = new List<Enemy>();
     private Tile enemyTile = null;
 
+    // UI
     private Camera mainCamera;
+    private GameObject actionMenu;
+    private bool moving;
+    private bool attacking;
+    private GameObject leftInfo;
+    private GameObject rightInfo;
 
-	private void Awake ()
+    private void Awake()
     {
         Instance = this;
         mainCamera = Camera.main;
         mapObject = transform.Find("mapObject").gameObject;
-	}
-	
+        mLevel = MainMenu.level;
+
+        moving = false;
+    }
+
     private void Start()
     {
         // 1 = giza, 2 = lutia #1, 3 = lutia #2
-        loadLevel(1);
+        loadLevel(mLevel);
+
+        actionMenu = (GameObject)Instantiate(PrefabHolder.Instance.battleUI);
+        rightInfo = (GameObject)Instantiate(PrefabHolder.Instance.rightUI);
+        leftInfo = (GameObject)Instantiate(PrefabHolder.Instance.leftUI);
+
+        actionMenu.SetActive(false);
+        leftInfo.SetActive(false);
+        rightInfo.SetActive(false);
     }
 
-    void Update () {
+    void Update()
+    {
         Controls();
     }
 
@@ -190,42 +214,125 @@ public class GameManager : MonoBehaviour {
     private void glowTiles(List<Tile> tiles, int color)
     {
         foreach (Tile tile in tiles)
-        {
-            if (tile.occupied == 0)
-                tile.tileHighlight(color);
-        }
+            tile.tileHighlight(color);
     }
 
     // Keyboard Controls
     public void Controls()
-    { 
-        // use arrow keys to move cursor around
-        if (Input.GetKeyDown(KeyCode.LeftArrow))
-            moveCursor(0);
-        if (Input.GetKeyDown(KeyCode.UpArrow))
-            moveCursor(1);
-        if (Input.GetKeyDown(KeyCode.RightArrow))
-            moveCursor(2);
-        if (Input.GetKeyDown(KeyCode.DownArrow))
-            moveCursor(3);
-
-        // press "z" to move selected character to another tile
-        if (Input.GetKeyDown(KeyCode.Z))
+    {
+        // no UI elements
+        if (!actionMenu.activeInHierarchy && !leftInfo.activeInHierarchy)
         {
-            if (player.Move(map, playerTile, currTile))
-                playerTile = currTile;
+            // use arrow keys to move cursor around
+            if (Input.GetKeyDown(KeyCode.LeftArrow))
+                moveCursor(0);
+            if (Input.GetKeyDown(KeyCode.UpArrow))
+                moveCursor(1);
+            if (Input.GetKeyDown(KeyCode.RightArrow))
+                moveCursor(2);
+            if (Input.GetKeyDown(KeyCode.DownArrow))
+                moveCursor(3);
+
+            // move player to selected tile
+            if (Input.GetKeyDown(KeyCode.Z) && currTile.glow == 1 && moving)
+            {
+                glowTiles(map, 0);
+                if (player.Move(map, playerTile, currTile))
+                {
+                    playerTile = currTile;
+                    moving = false;
+                }
+            }
+
+            // choose character to attack
+            if (Input.GetKeyDown(KeyCode.Z) && currTile.glow == 3 && currTile.occupied != 0 && moving)
+            {
+                glowTiles(map, 0);
+                leftInfo.SetActive(true);
+                rightInfo.SetActive(true);
+                moving = false;
+                if (currTile.occupied == 2)
+                {
+                    enemy = currTile.getEnem(enemyList);
+                    enemy.highlight(true);
+                }
+                return;
+            }
+        }
+
+        // choose from move, action, wait, status
+        if (actionMenu.activeInHierarchy)
+        {
+            if (Input.GetKeyDown(KeyCode.DownArrow))
+                actionMenu.GetComponent<BattleUI>().selectNext();
+            if (Input.GetKeyDown(KeyCode.UpArrow))
+                actionMenu.GetComponent<BattleUI>().selectPrev();
+
+            // choose move
+            if (Input.GetKeyDown(KeyCode.Z) && actionMenu.GetComponent<BattleUI>().actMenuSelected == 0)
+            {
+                setMenu(false);
+                glowTiles(player.AstarGlow(map), 1);
+                moving = true;
+            }
+
+            // choose action
+            if (Input.GetKeyDown(KeyCode.Z) && actionMenu.GetComponent<BattleUI>().actMenuSelected == 1)
+            {
+                setMenu(false);
+                glowTiles(player.allAttack(map), 3);
+                moving = true;
+            }
+        }
+
+        // show player and enemy info on attack
+        if (leftInfo.activeInHierarchy)
+        {
+            // attack selected enemy
+            if (Input.GetKeyDown(KeyCode.Z))
+            {
+                player.Attack(currTile, playerList, enemyList);
+                enemy.highlight(false);
+                leftInfo.SetActive(false);
+                rightInfo.SetActive(false);
+                return;
+            }
+
+            // cancel out of attack
+            if (Input.GetKeyDown(KeyCode.X))
+            {
+                glowTiles(player.allAttack(map), 3);
+                moving = true;
+                enemy.highlight(false);
+                leftInfo.SetActive(false);
+                rightInfo.SetActive(false);
+                return;
+            }
+        }
+
+        // show action menu (move, action, wait, status)
+        if (Input.GetKeyDown(KeyCode.Z) && player.tileLoc == currTile && moving == false)
+            setMenu(true);
+
+        // cancel out of action menu
+        if (Input.GetKeyDown(KeyCode.X))
+        {
+            setMenu(false);
+            moving = false;
+            glowTiles(map, 0);
+
         }
 
         // press "s" to select the character at the current tile (where cursor is)
         if (Input.GetKeyDown(KeyCode.S))
             selectChar(currTile);
+    }
 
-        // press "g" to cause tiles to glow blue (where character can move)
-        // press "r" to disable tile glow
-        if (Input.GetKeyDown(KeyCode.G))
-            glowTiles(player.AstarGlow(map), 1);
-        if (Input.GetKeyDown(KeyCode.R))
-            glowTiles(map, 0);
+    private void setMenu(bool status)
+    {
+        actionMenu.SetActive(status);
+        if (status)
+            actionMenu.GetComponent<BattleUI>().resetMenu();
     }
 
     // Camera moves around to follow the cursor
