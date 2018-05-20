@@ -9,6 +9,7 @@
 		<up>5</up>
 		<right>1</right>
 		<down>-9</down>
+		<occupy>0</occupy>
 	</tile>
 	<tile id="1">
 		<height>5</height>
@@ -19,6 +20,7 @@
 		<up>6</up>
 		<right>2</right>
 		<down>-9</down>
+		<occupy>0</occupy>
 	</tile>
 	<tile id="2">
 		<height>6</height>
@@ -29,6 +31,7 @@
 		<up>7</up>
 		<right>3</right>
 		<down>-9</down>
+		<occupy>0</occupy>
 	</tile>
 	<tile id="3">
 		<height>5</height>
@@ -39,6 +42,7 @@
 		<up>8</up>
 		<right>4</right>
 		<down>-9</down>
+		<occupy>0</occupy>
 	</tile>
 	<tile id="4">
 		<height>4</height>
@@ -49,8 +53,9 @@
 		<up>9</up>
 		<right>-9</right>
 		<down>-9</down>
+		<occupy>0</occupy>
 	</tile>
-	
+
 	<tile id="5">
 		<height>5</height>
 		<row>1</row>
@@ -60,6 +65,7 @@
 		<up>12</up>
 		<right>6</right>
 		<down>0</down>
+		<occupy>0</occupy>
 	</tile>
 	<tile id="6">
 		<height>5</height>
@@ -70,6 +76,7 @@
 		<up>13</up>
 		<right>7</right>
 		<down>1</down>
+		<occupy>0</occupy>
 	</tile>
 	<tile id="7">
 		<height>7</height>
@@ -80,6 +87,7 @@
 		<up>14</up>
 		<right>8</right>
 		<down>2</down>
+		<occupy>0</occupy>
 	</tile>
 	<tile id="8">
 		<height>6</height>
@@ -90,6 +98,7 @@
 		<up>15</up>
 		<right>9</right>
 		<down>3</down>
+		<occupy>0</occupy>
 	</tile>
 	<tile id="9">
 		<height>5</height>
@@ -100,6 +109,7 @@
 		<up>16</up>
 		<right>10</right>
 		<down>4</down>
+		<occupy>0</occupy>
 	</tile>
 	<tile id="10">
 		<height>4</height>
@@ -110,6 +120,7 @@
 		<up>17</up>
 		<right>11</right>
 		<down>-9</down>
+		<occupy>0</occupy>
 	</tile>
 	<tile id="11">
 		<height>4</height>
@@ -120,6 +131,7 @@
 		<up>18</up>
 		<right>-9</right>
 		<down>-9</down>
+		<occupy>0</occupy>
 	</tile>
 
 	<tile id="12">
@@ -131,6 +143,7 @@
 		<up>19</up>
 		<right>13</right>
 		<down>5</down>
+		<occupy>0</occupy>
 	</tile>
 	<tile id="13">
 		<height>6</height>
@@ -141,6 +154,7 @@
 		<up>20</up>
 		<right>14</right>
 		<down>6</down>
+		<occupy>0</occupy>
 	</tile>
 	<tile id="14">
 		<height>6</height>
@@ -151,6 +165,7 @@
 		<up>21</up>
 		<right>15</right>
 		<down>7</down>
+		<occupy>0</occupy>
 	</tile>
 	<tile id="15">
 		<height>8</height>
@@ -161,6 +176,7 @@
 		<up>22</up>
 		<right>16</right>
 		<down>8</down>
+		<occupy>0</occupy>
 	</tile>
 	<tile id="16">
 		<height>8</height>
@@ -171,6 +187,7 @@
 		<up>23</up>
 		<right>17</right>
 		<down>9</down>
+		<occupy>0</occupy>
 	</tile>
 	<tile id="17">
 		<height>4</height>
@@ -181,6 +198,7 @@
 		<up>24</up>
 		<right>18</right>
 		<down>10</down>
+		<occupy>0</occupy>
 	</tile>
 	<tile id="18">
 		<height>3</height>
@@ -191,6 +209,7 @@
 		<up>25</up>
 		<right>-9</right>
 		<down>11</down>
+		<occupy>0</occupy>
 	</tile>
 
 	<tile id="19">
@@ -202,6 +221,7 @@
 		<up>26</up>
 		<right>20</right>
 		<down>12</down>
+		<occupy>0</occupy>
 	</tile>
 	<tile id="20">
 		<height>6</height>
@@ -212,6 +232,7 @@
 		<up>27</up>
 		<right>21</right>
 		<down>13</down>
+		<occupy>0</occupy>
 	</tile>
 	<tile id="21">
 		<height>6</height>
@@ -222,6 +243,7 @@
 		<up>28</up>
 		<right>22</right>
 		<down>14</down>
+		<occupy>0</occupy>
 	</tile>
 	<tile id="22">
 		<height>6</height>
@@ -232,6 +254,7 @@
 		<up>29</up>
 		<right>23</right>
 		<down>15</down>
+		<occupy>0</occupy>
 	</tile>
 	<tile id="23">
 		<height>6</height>
@@ -242,6 +265,7 @@
 		<up>30</up>
 		<right>24</right>
 		<down>16</down>
+		<occupy>0</occupy>
 	</tile>
 	<tile id="24">
 		<height>5</height>
@@ -252,6 +276,7 @@
 		<up>31</up>
 		<right>25</right>
 		<down>17</down>
+		<occupy>0</occupy>
 	</tile>
 	<tile id="25">
 		<height>3</height>
@@ -262,6 +287,7 @@
 		<up>32</up>
 		<right>-9</right>
 		<down>18</down>
+		<occupy>0</occupy>
 	</tile>
 
 	<tile id="26">
@@ -273,6 +299,7 @@
 		<up>36</up>
 		<right>27</right>
 		<down>19</down>
+		<occupy>0</occupy>
 	</tile>
 	<tile id="27">
 		<height>9</height>
@@ -283,6 +310,7 @@
 		<up>37</up>
 		<right>28</right>
 		<down>20</down>
+		<occupy>3</occupy>
 	</tile>
 	<tile id="28">
 		<height>7</height>
@@ -293,6 +321,7 @@
 		<up>38</up>
 		<right>29</right>
 		<down>21</down>
+		<occupy>0</occupy>
 	</tile>
 	<tile id="29">
 		<height>6</height>
@@ -303,6 +332,7 @@
 		<up>39</up>
 		<right>30</right>
 		<down>22</down>
+		<occupy>0</occupy>
 	</tile>
 	<tile id="30">
 		<height>6</height>
@@ -313,6 +343,7 @@
 		<up>40</up>
 		<right>31</right>
 		<down>23</down>
+		<occupy>0</occupy>
 	</tile>
 	<tile id="31">
 		<height>4</height>
@@ -323,6 +354,7 @@
 		<up>41</up>
 		<right>32</right>
 		<down>24</down>
+		<occupy>0</occupy>
 	</tile>
 	<tile id="32">
 		<height>3</height>
@@ -333,6 +365,7 @@
 		<up>42</up>
 		<right>33</right>
 		<down>25</down>
+		<occupy>0</occupy>
 	</tile>
 	<tile id="33">
 		<height>2</height>
@@ -343,6 +376,7 @@
 		<up>43</up>
 		<right>34</right>
 		<down>-9</down>
+		<occupy>0</occupy>
 	</tile>
 	<tile id="34">
 		<height>1</height>
@@ -353,6 +387,7 @@
 		<up>44</up>
 		<right>35</right>
 		<down>-9</down>
+		<occupy>0</occupy>
 	</tile>
 	<tile id="35">
 		<height>1</height>
@@ -363,6 +398,7 @@
 		<up>45</up>
 		<right>-9</right>
 		<down>-9</down>
+		<occupy>0</occupy>
 	</tile>
 
 	<tile id="36">
@@ -374,6 +410,7 @@
 		<up>47</up>
 		<right>37</right>
 		<down>26</down>
+		<occupy>0</occupy>
 	</tile>
 	<tile id="37">
 		<height>8</height>
@@ -384,6 +421,7 @@
 		<up>48</up>
 		<right>38</right>
 		<down>27</down>
+		<occupy>0</occupy>
 	</tile>
 	<tile id="38">
 		<height>7</height>
@@ -394,6 +432,7 @@
 		<up>49</up>
 		<right>39</right>
 		<down>28</down>
+		<occupy>0</occupy>
 	</tile>
 	<tile id="39">
 		<height>7</height>
@@ -404,6 +443,7 @@
 		<up>50</up>
 		<right>40</right>
 		<down>29</down>
+		<occupy>0</occupy>
 	</tile>
 	<tile id="40">
 		<height>7</height>
@@ -414,6 +454,7 @@
 		<up>51</up>
 		<right>41</right>
 		<down>30</down>
+		<occupy>0</occupy>
 	</tile>
 	<tile id="41">
 		<height>4</height>
@@ -424,6 +465,7 @@
 		<up>52</up>
 		<right>42</right>
 		<down>31</down>
+		<occupy>0</occupy>
 	</tile>
 	<tile id="42">
 		<height>3</height>
@@ -434,6 +476,7 @@
 		<up>53</up>
 		<right>43</right>
 		<down>32</down>
+		<occupy>0</occupy>
 	</tile>
 	<tile id="43">
 		<height>2</height>
@@ -444,6 +487,7 @@
 		<up>54</up>
 		<right>44</right>
 		<down>33</down>
+		<occupy>0</occupy>
 	</tile>
 	<tile id="44">
 		<height>2</height>
@@ -454,6 +498,7 @@
 		<up>55</up>
 		<right>45</right>
 		<down>34</down>
+		<occupy>0</occupy>
 	</tile>
 	<tile id="45">
 		<height>2</height>
@@ -464,6 +509,7 @@
 		<up>56</up>
 		<right>46</right>
 		<down>35</down>
+		<occupy>0</occupy>
 	</tile>
 	<tile id="46">
 		<height>2</height>
@@ -474,6 +520,7 @@
 		<up>57</up>
 		<right>-9</right>
 		<down>-9</down>
+		<occupy>0</occupy>
 	</tile>
 
 	<tile id="47">
@@ -485,6 +532,7 @@
 		<up>60</up>
 		<right>48</right>
 		<down>36</down>
+		<occupy>0</occupy>
 	</tile>
 	<tile id="48">
 		<height>10</height>
@@ -495,6 +543,7 @@
 		<up>61</up>
 		<right>49</right>
 		<down>37</down>
+		<occupy>0</occupy>
 	</tile>
 	<tile id="49">
 		<height>8</height>
@@ -505,6 +554,7 @@
 		<up>62</up>
 		<right>50</right>
 		<down>38</down>
+		<occupy>0</occupy>
 	</tile>
 	<tile id="50">
 		<height>7</height>
@@ -515,6 +565,7 @@
 		<up>63</up>
 		<right>51</right>
 		<down>39</down>
+		<occupy>0</occupy>
 	</tile>
 	<tile id="51">
 		<height>7</height>
@@ -525,6 +576,7 @@
 		<up>64</up>
 		<right>52</right>
 		<down>40</down>
+		<occupy>0</occupy>
 	</tile>
 	<tile id="52">
 		<height>11</height>
@@ -535,6 +587,7 @@
 		<up>65</up>
 		<right>53</right>
 		<down>41</down>
+		<occupy>3</occupy>
 	</tile>
 	<tile id="53">
 		<height>11</height>
@@ -545,6 +598,7 @@
 		<up>66</up>
 		<right>54</right>
 		<down>42</down>
+		<occupy>3</occupy>
 	</tile>
 	<tile id="54">
 		<height>4</height>
@@ -555,6 +609,7 @@
 		<up>67</up>
 		<right>55</right>
 		<down>43</down>
+		<occupy>0</occupy>
 	</tile>
 	<tile id="55">
 		<height>3</height>
@@ -565,6 +620,7 @@
 		<up>68</up>
 		<right>56</right>
 		<down>44</down>
+		<occupy>0</occupy>
 	</tile>
 	<tile id="56">
 		<height>2</height>
@@ -575,6 +631,7 @@
 		<up>69</up>
 		<right>57</right>
 		<down>45</down>
+		<occupy>0</occupy>
 	</tile>
 	<tile id="57">
 		<height>1</height>
@@ -585,6 +642,7 @@
 		<up>70</up>
 		<right>58</right>
 		<down>46</down>
+		<occupy>0</occupy>
 	</tile>
 	<tile id="58">
 		<height>1</height>
@@ -595,6 +653,7 @@
 		<up>71</up>
 		<right>59</right>
 		<down>-9</down>
+		<occupy>0</occupy>
 	</tile>
 	<tile id="59">
 		<height>1</height>
@@ -605,6 +664,7 @@
 		<up>72</up>
 		<right>-9</right>
 		<down>-9</down>
+		<occupy>0</occupy>
 	</tile>
 
 	<tile id="60">
@@ -616,6 +676,7 @@
 		<up>73</up>
 		<right>61</right>
 		<down>47</down>
+		<occupy>0</occupy>
 	</tile>
 	<tile id="61">
 		<height>11</height>
@@ -626,6 +687,7 @@
 		<up>74</up>
 		<right>62</right>
 		<down>48</down>
+		<occupy>0</occupy>
 	</tile>
 	<tile id="62">
 		<height>11</height>
@@ -636,6 +698,7 @@
 		<up>75</up>
 		<right>63</right>
 		<down>49</down>
+		<occupy>0</occupy>
 	</tile>
 	<tile id="63">
 		<height>11</height>
@@ -646,6 +709,7 @@
 		<up>76</up>
 		<right>64</right>
 		<down>50</down>
+		<occupy>0</occupy>
 	</tile>
 	<tile id="64">
 		<height>11</height>
@@ -656,6 +720,7 @@
 		<up>77</up>
 		<right>65</right>
 		<down>51</down>
+		<occupy>0</occupy>
 	</tile>
 	<tile id="65">
 		<height>11</height>
@@ -666,6 +731,7 @@
 		<up>78</up>
 		<right>66</right>
 		<down>52</down>
+		<occupy>0</occupy>
 	</tile>
 	<tile id="66">
 		<height>12</height>
@@ -676,6 +742,7 @@
 		<up>79</up>
 		<right>67</right>
 		<down>53</down>
+		<occupy>0</occupy>
 	</tile>
 	<tile id="67">
 		<height>9</height>
@@ -686,6 +753,7 @@
 		<up>80</up>
 		<right>68</right>
 		<down>54</down>
+		<occupy>0</occupy>
 	</tile>
 	<tile id="68">
 		<height>10</height>
@@ -696,6 +764,7 @@
 		<up>81</up>
 		<right>69</right>
 		<down>55</down>
+		<occupy>3</occupy>
 	</tile>
 	<tile id="69">
 		<height>3</height>
@@ -706,6 +775,7 @@
 		<up>82</up>
 		<right>70</right>
 		<down>56</down>
+		<occupy>0</occupy>
 	</tile>
 	<tile id="70">
 		<height>2</height>
@@ -716,6 +786,7 @@
 		<up>83</up>
 		<right>71</right>
 		<down>57</down>
+		<occupy>0</occupy>
 	</tile>
 	<tile id="71">
 		<height>1</height>
@@ -726,6 +797,7 @@
 		<up>84</up>
 		<right>72</right>
 		<down>58</down>
+		<occupy>0</occupy>
 	</tile>
 	<tile id="72">
 		<height>1</height>
@@ -736,6 +808,7 @@
 		<up>85</up>
 		<right>-9</right>
 		<down>59</down>
+		<occupy>0</occupy>
 	</tile>
 
 	<tile id="73">
@@ -747,6 +820,7 @@
 		<up>86</up>
 		<right>74</right>
 		<down>60</down>
+		<occupy>0</occupy>
 	</tile>
 	<tile id="74">
 		<height>12</height>
@@ -757,6 +831,7 @@
 		<up>87</up>
 		<right>75</right>
 		<down>61</down>
+		<occupy>0</occupy>
 	</tile>
 	<tile id="75">
 		<height>12</height>
@@ -767,6 +842,7 @@
 		<up>88</up>
 		<right>76</right>
 		<down>62</down>
+		<occupy>0</occupy>
 	</tile>
 	<tile id="76">
 		<height>12</height>
@@ -777,6 +853,7 @@
 		<up>89</up>
 		<right>77</right>
 		<down>63</down>
+		<occupy>0</occupy>
 	</tile>
 	<tile id="77">
 		<height>12</height>
@@ -787,6 +864,7 @@
 		<up>90</up>
 		<right>78</right>
 		<down>64</down>
+		<occupy>0</occupy>
 	</tile>
 	<tile id="78">
 		<height>12</height>
@@ -797,6 +875,7 @@
 		<up>91</up>
 		<right>79</right>
 		<down>65</down>
+		<occupy>0</occupy>
 	</tile>
 	<tile id="79">
 		<height>12</height>
@@ -807,6 +886,7 @@
 		<up>92</up>
 		<right>80</right>
 		<down>66</down>
+		<occupy>0</occupy>
 	</tile>
 	<tile id="80">
 		<height>11</height>
@@ -817,6 +897,7 @@
 		<up>93</up>
 		<right>81</right>
 		<down>67</down>
+		<occupy>0</occupy>
 	</tile>
 	<tile id="81">
 		<height>10</height>
@@ -827,6 +908,7 @@
 		<up>94</up>
 		<right>82</right>
 		<down>68</down>
+		<occupy>3</occupy>
 	</tile>
 	<tile id="82">
 		<height>3</height>
@@ -837,6 +919,7 @@
 		<up>95</up>
 		<right>83</right>
 		<down>69</down>
+		<occupy>0</occupy>
 	</tile>
 	<tile id="83">
 		<height>2</height>
@@ -847,6 +930,7 @@
 		<up>96</up>
 		<right>84</right>
 		<down>70</down>
+		<occupy>0</occupy>
 	</tile>
 	<tile id="84">
 		<height>1</height>
@@ -857,6 +941,7 @@
 		<up>97</up>
 		<right>85</right>
 		<down>71</down>
+		<occupy>0</occupy>
 	</tile>
 	<tile id="85">
 		<height>1</height>
@@ -867,6 +952,7 @@
 		<up>98</up>
 		<right>-9</right>
 		<down>72</down>
+		<occupy>0</occupy>
 	</tile>
 
 	<tile id="86">
@@ -878,6 +964,7 @@
 		<up>99</up>
 		<right>87</right>
 		<down>73</down>
+		<occupy>3</occupy>
 	</tile>
 	<tile id="87">
 		<height>20</height>
@@ -888,6 +975,7 @@
 		<up>100</up>
 		<right>88</right>
 		<down>74</down>
+		<occupy>3</occupy>
 	</tile>
 	<tile id="88">
 		<height>20</height>
@@ -898,6 +986,7 @@
 		<up>101</up>
 		<right>89</right>
 		<down>75</down>
+		<occupy>3</occupy>
 	</tile>
 	<tile id="89">
 		<height>13</height>
@@ -908,6 +997,7 @@
 		<up>102</up>
 		<right>90</right>
 		<down>76</down>
+		<occupy>0</occupy>
 	</tile>
 	<tile id="90">
 		<height>12</height>
@@ -918,6 +1008,7 @@
 		<up>103</up>
 		<right>91</right>
 		<down>77</down>
+		<occupy>0</occupy>
 	</tile>
 	<tile id="91">
 		<height>12</height>
@@ -928,6 +1019,7 @@
 		<up>104</up>
 		<right>92</right>
 		<down>78</down>
+		<occupy>0</occupy>
 	</tile>
 	<tile id="92">
 		<height>11</height>
@@ -938,6 +1030,7 @@
 		<up>105</up>
 		<right>93</right>
 		<down>79</down>
+		<occupy>0</occupy>
 	</tile>
 	<tile id="93">
 		<height>11</height>
@@ -948,6 +1041,7 @@
 		<up>106</up>
 		<right>94</right>
 		<down>80</down>
+		<occupy>0</occupy>
 	</tile>
 	<tile id="94">
 		<height>10</height>
@@ -958,6 +1052,7 @@
 		<up>107</up>
 		<right>95</right>
 		<down>81</down>
+		<occupy>3</occupy>
 	</tile>
 	<tile id="95">
 		<height>3</height>
@@ -968,6 +1063,7 @@
 		<up>108</up>
 		<right>96</right>
 		<down>82</down>
+		<occupy>0</occupy>
 	</tile>
 	<tile id="96">
 		<height>3</height>
@@ -978,6 +1074,7 @@
 		<up>109</up>
 		<right>97</right>
 		<down>83</down>
+		<occupy>0</occupy>
 	</tile>
 	<tile id="97">
 		<height>1</height>
@@ -988,6 +1085,7 @@
 		<up>110</up>
 		<right>98</right>
 		<down>84</down>
+		<occupy>0</occupy>
 	</tile>
 	<tile id="98">
 		<height>1</height>
@@ -998,8 +1096,9 @@
 		<up>111</up>
 		<right>-9</right>
 		<down>85</down>
+		<occupy>0</occupy>
 	</tile>
-	
+
 	<tile id="99">
 		<height>20</height>
 		<row>10</row>
@@ -1009,6 +1108,7 @@
 		<up>112</up>
 		<right>100</right>
 		<down>86</down>
+		<occupy>0</occupy>
 	</tile>
 	<tile id="100">
 		<height>20</height>
@@ -1019,6 +1119,7 @@
 		<up>113</up>
 		<right>101</right>
 		<down>87</down>
+		<occupy>0</occupy>
 	</tile>
 	<tile id="101">
 		<height>20</height>
@@ -1029,6 +1130,7 @@
 		<up>114</up>
 		<right>102</right>
 		<down>88</down>
+		<occupy>0</occupy>
 	</tile>
 	<tile id="102">
 		<height>15</height>
@@ -1039,6 +1141,7 @@
 		<up>115</up>
 		<right>103</right>
 		<down>89</down>
+		<occupy>0</occupy>
 	</tile>
 	<tile id="103">
 		<height>16</height>
@@ -1049,6 +1152,7 @@
 		<up>116</up>
 		<right>104</right>
 		<down>90</down>
+		<occupy>0</occupy>
 	</tile>
 	<tile id="104">
 		<height>13</height>
@@ -1059,6 +1163,7 @@
 		<up>117</up>
 		<right>105</right>
 		<down>91</down>
+		<occupy>0</occupy>
 	</tile>
 	<tile id="105">
 		<height>11</height>
@@ -1069,6 +1174,7 @@
 		<up>118</up>
 		<right>106</right>
 		<down>92</down>
+		<occupy>0</occupy>
 	</tile>
 	<tile id="106">
 		<height>11</height>
@@ -1079,6 +1185,7 @@
 		<up>119</up>
 		<right>107</right>
 		<down>93</down>
+		<occupy>0</occupy>
 	</tile>
 	<tile id="107">
 		<height>12</height>
@@ -1089,6 +1196,7 @@
 		<up>120</up>
 		<right>108</right>
 		<down>94</down>
+		<occupy>0</occupy>
 	</tile>
 	<tile id="108">
 		<height>13</height>
@@ -1099,6 +1207,7 @@
 		<up>121</up>
 		<right>109</right>
 		<down>95</down>
+		<occupy>3</occupy>
 	</tile>
 	<tile id="109">
 		<height>1</height>
@@ -1109,6 +1218,7 @@
 		<up>122</up>
 		<right>110</right>
 		<down>96</down>
+		<occupy>0</occupy>
 	</tile>
 	<tile id="110">
 		<height>1</height>
@@ -1119,6 +1229,7 @@
 		<up>123</up>
 		<right>111</right>
 		<down>97</down>
+		<occupy>0</occupy>
 	</tile>
 	<tile id="111">
 		<height>2</height>
@@ -1129,6 +1240,7 @@
 		<up>124</up>
 		<right>-9</right>
 		<down>98</down>
+		<occupy>0</occupy>
 	</tile>
 
 	<tile id="112">
@@ -1140,6 +1252,7 @@
 		<up>125</up>
 		<right>113</right>
 		<down>99</down>
+		<occupy>0</occupy>
 	</tile>
 	<tile id="113">
 		<height>21</height>
@@ -1150,6 +1263,7 @@
 		<up>126</up>
 		<right>114</right>
 		<down>100</down>
+		<occupy>0</occupy>
 	</tile>
 	<tile id="114">
 		<height>21</height>
@@ -1160,6 +1274,7 @@
 		<up>127</up>
 		<right>115</right>
 		<down>101</down>
+		<occupy>0</occupy>
 	</tile>
 	<tile id="115">
 		<height>18</height>
@@ -1170,6 +1285,7 @@
 		<up>128</up>
 		<right>116</right>
 		<down>102</down>
+		<occupy>0</occupy>
 	</tile>
 	<tile id="116">
 		<height>17</height>
@@ -1180,6 +1296,7 @@
 		<up>129</up>
 		<right>117</right>
 		<down>103</down>
+		<occupy>0</occupy>
 	</tile>
 	<tile id="117">
 		<height>15</height>
@@ -1190,6 +1307,7 @@
 		<up>130</up>
 		<right>118</right>
 		<down>104</down>
+		<occupy>3</occupy>
 	</tile>
 	<tile id="118">
 		<height>12</height>
@@ -1200,6 +1318,7 @@
 		<up>131</up>
 		<right>119</right>
 		<down>105</down>
+		<occupy>0</occupy>
 	</tile>
 	<tile id="119">
 		<height>12</height>
@@ -1210,6 +1329,7 @@
 		<up>132</up>
 		<right>120</right>
 		<down>106</down>
+		<occupy>0</occupy>
 	</tile>
 	<tile id="120">
 		<height>12</height>
@@ -1220,6 +1340,7 @@
 		<up>133</up>
 		<right>121</right>
 		<down>107</down>
+		<occupy>0</occupy>
 	</tile>
 	<tile id="121">
 		<height>10</height>
@@ -1230,6 +1351,7 @@
 		<up>134</up>
 		<right>122</right>
 		<down>108</down>
+		<occupy>0</occupy>
 	</tile>
 	<tile id="122">
 		<height>1</height>
@@ -1240,6 +1362,7 @@
 		<up>135</up>
 		<right>123</right>
 		<down>109</down>
+		<occupy>0</occupy>
 	</tile>
 	<tile id="123">
 		<height>1</height>
@@ -1250,6 +1373,7 @@
 		<up>136</up>
 		<right>124</right>
 		<down>110</down>
+		<occupy>0</occupy>
 	</tile>
 	<tile id="124">
 		<height>3</height>
@@ -1260,6 +1384,7 @@
 		<up>137</up>
 		<right>-9</right>
 		<down>111</down>
+		<occupy>0</occupy>
 	</tile>
 
 	<tile id="125">
@@ -1271,6 +1396,7 @@
 		<up>-9</up>
 		<right>126</right>
 		<down>112</down>
+		<occupy>0</occupy>
 	</tile>
 	<tile id="126">
 		<height>21</height>
@@ -1281,6 +1407,7 @@
 		<up>-9</up>
 		<right>127</right>
 		<down>113</down>
+		<occupy>0</occupy>
 	</tile>
 	<tile id="127">
 		<height>21</height>
@@ -1291,6 +1418,7 @@
 		<up>-9</up>
 		<right>128</right>
 		<down>114</down>
+		<occupy>0</occupy>
 	</tile>
 	<tile id="128">
 		<height>20</height>
@@ -1301,6 +1429,7 @@
 		<up>-9</up>
 		<right>129</right>
 		<down>115</down>
+		<occupy>0</occupy>
 	</tile>
 	<tile id="129">
 		<height>16</height>
@@ -1311,6 +1440,7 @@
 		<up>-9</up>
 		<right>130</right>
 		<down>116</down>
+		<occupy>0</occupy>
 	</tile>
 	<tile id="130">
 		<height>15</height>
@@ -1321,6 +1451,7 @@
 		<up>-9</up>
 		<right>131</right>
 		<down>117</down>
+		<occupy>0</occupy>
 	</tile>
 	<tile id="131">
 		<height>14</height>
@@ -1331,6 +1462,7 @@
 		<up>-9</up>
 		<right>132</right>
 		<down>118</down>
+		<occupy>0</occupy>
 	</tile>
 	<tile id="132">
 		<height>12</height>
@@ -1341,6 +1473,7 @@
 		<up>-9</up>
 		<right>133</right>
 		<down>119</down>
+		<occupy>0</occupy>
 	</tile>
 	<tile id="133">
 		<height>12</height>
@@ -1351,6 +1484,7 @@
 		<up>-9</up>
 		<right>134</right>
 		<down>120</down>
+		<occupy>0</occupy>
 	</tile>
 	<tile id="134">
 		<height>8</height>
@@ -1361,6 +1495,7 @@
 		<up>-9</up>
 		<right>135</right>
 		<down>121</down>
+		<occupy>0</occupy>
 	</tile>
 	<tile id="135">
 		<height>6</height>
@@ -1371,6 +1506,7 @@
 		<up>-9</up>
 		<right>136</right>
 		<down>122</down>
+		<occupy>0</occupy>
 	</tile>
 	<tile id="136">
 		<height>4</height>
@@ -1381,6 +1517,7 @@
 		<up>-9</up>
 		<right>137</right>
 		<down>123</down>
+		<occupy>0</occupy>
 	</tile>
 	<tile id="137">
 		<height>2</height>
@@ -1391,5 +1528,6 @@
 		<up>-9</up>
 		<right>-9</right>
 		<down>124</down>
+		<occupy>0</occupy>
 	</tile>
 </mapXml>
