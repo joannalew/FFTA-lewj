@@ -74,12 +74,20 @@ public class GameManager : MonoBehaviour
 
         actionMenu.GetComponent<BattleUI>().setNumOptions(4);
         sysUI.GetComponent<BattleUI>().setNumOptions(3);
+
+        /////////////////////////////////////////////////////////////////////
+        //EnemyAI TEST
+        //Character enemAI_init = (Character)FindObjectOfType(typeof(Character));
+        //StartCoroutine(enemAI_init.ExecuteEnemyTurnAI(enemyList[0], map, playerList));
+        /////////////////////////////////////////////////////////////////////
+        
     }
 
     void Update()
     {
         Controls();
     }
+
 
     #region LoadMap																					   
     // Load map from XML; initiate cursor, enemies, and characters; set camera position

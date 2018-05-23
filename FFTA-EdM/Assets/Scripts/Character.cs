@@ -10,7 +10,7 @@ public class Character : MonoBehaviour {
     public int jumpStat = 2;
     public int hpStat = 25;
     public int attackStat = 5;
-    public int atkRange = 1;
+    public int atkRange = 10;
     public int atkHeightLow = 1;
     public int atkHeightHigh = -2;
 
@@ -103,7 +103,7 @@ public class Character : MonoBehaviour {
     }
 
     // Moves the character sprite along the given Tile path
-    protected IEnumerator SmoothMove(List<Tile> path)
+    public IEnumerator SmoothMove(List<Tile> path)
     {
         for (int i = 0; i < path.Count; i++)
         {
@@ -317,7 +317,7 @@ public class Character : MonoBehaviour {
 
     // Basic Astar algorithm
     // Returns path (list of Tiles) from one Tile to another; null if no path available
-    protected List<Tile> Astar(List<Tile> map, Tile start, Tile end)
+    public List<Tile> Astar(List<Tile> map, Tile start, Tile end)
     {
         XMLManager.resetMap(map);
 
@@ -378,4 +378,253 @@ public class Character : MonoBehaviour {
         FieldInfo field = GetType().GetField(statName);
         field.SetValue(this, value);
     }
+
+
+
+
+
+    public List<Tile> PotentialSpacesToMoveTo(List<Tile> map)
+    {
+        List<Tile> potentialSpaces = new List<Tile>();
+        List<Tile> spaceOccupiedBySameType = new List<Tile>();
+        Queue<Tile> toCheck = new Queue<Tile>();
+        Tile[] neighbors = new Tile[4] { null, null, null, null };
+        Tile start = tileLoc;
+        Tile cur;
+
+        XMLManager.resetMap(map);
+
+        start.cost = 0;
+        toCheck.Enqueue(start);
+        potentialSpaces.Add(start);
+
+        while (toCheck.Count != 0)
+        {
+            cur = toCheck.Dequeue();
+            neighbors = cur.neighbors;
+
+            foreach (var tile in neighbors)
+            {
+                if (tile != null)
+                {
+                    if (tile.cost == -1 || (cur.cost + 1 < tile.cost))
+                        tile.cost = cur.cost + 1;
+
+                    //tile is added to list if it is in range depending on the character's move stat, is not occupied, is not already in the list, it is accessible based on character's jump stat, and it's not the starting tile
+                    if ((tile.cost <= moveStat) && (tile.occupied == 0 || tile.occupied == group) &&
+                        !potentialSpaces.Contains(tile) && (Math.Abs(cur.height - tile.height) <= jumpStat) &&
+                        !spaceOccupiedBySameType.Contains(tile))
+                    {
+                        if (tile.occupied == 2)
+                        { //if space is occupied by other enemy, can't move there, but should still examine neighbors
+                            toCheck.Enqueue(tile);
+                            spaceOccupiedBySameType.Add(tile);
+                        }
+                        else
+                        {
+                            potentialSpaces.Add(tile);
+                            toCheck.Enqueue(tile);
+                        }
+                    }
+                }
+            }
+        }
+        return potentialSpaces;
+    }
+
+
+
+
+    public IEnumerator ExecuteEnemyTurnAI(Character curChar, List<Tile> map, List<Character> charaList)
+    {   //determine possible spaces to move to
+        List<Tile> potentialSpaces = curChar.PotentialSpacesToMoveTo(map);
+
+        //display spaces with blue animation, pause for 1 second to see animation
+        foreach (Tile space in potentialSpaces)
+            space.tileHighlight(1);
+        yield return new WaitForSeconds(1.1f);
+
+        //determine target (will always return a character)
+        Character target = DetermineTarget(curChar, map, charaList, potentialSpaces);
+
+        //get path to target to compare to moveable spaces
+        List<Tile> totalPathToTarget = Astar(map, curChar.tileLoc, target.tileLoc);
+        
+        
+        List<Tile> executablePath = new List<Tile>();
+        Tile destinationTile;
+
+        //if there's no path to the target, move to a space at random
+        if (totalPathToTarget.Count == 0)
+        {
+            int destNum = UnityEngine.Random.Range(0, potentialSpaces.Count - 1);
+            destinationTile = potentialSpaces[destNum];
+            executablePath = Astar(map, curChar.tileLoc, destinationTile);
+        }
+        else //creates List of intersection between the complete path to the target and the possible spaces to move to
+        {
+             foreach (var totalPath in totalPathToTarget)
+             {
+                  foreach (var potential in potentialSpaces)
+                  {
+                     if (totalPath.id == potential.id)
+                         executablePath.Add(totalPath);
+                  }
+             }
+            destinationTile = executablePath[executablePath.Count() - 1];
+        }
+       
+        
+        //glow final tile in executable path (destination tile) orange
+        destinationTile.tileHighlight(2);
+        yield return new WaitForSeconds(.3f);
+
+
+        //remove blue glow on potential spaces
+        foreach (Tile space in potentialSpaces)
+            space.tileHighlight(0);
+
+        //move to new tile 
+        StartCoroutine(curChar.SmoothMove(executablePath));
+        yield return new WaitForSeconds(3.0f);
+
+
+        //attack target if possible
+        //green glow tiles in attack range - determine targets in attack range
+        List<Tile> attackRange = curChar.TilesInAttackRange(map);
+        bool playerInAttackRange = false;
+        //see if any players on on tiles in attack range
+        foreach(var player in charaList)
+        {
+            if(attackRange.Contains(player.tileLoc))
+            {
+                playerInAttackRange = true;
+                break;
+            }
+        }
+
+        if (playerInAttackRange)
+        {
+            foreach (Tile space in attackRange)
+                space.tileHighlight(3);
+            yield return new WaitForSeconds(1.0f);
+
+            //if target is in attack range, attack target
+            foreach (Tile space in attackRange)
+                space.tileHighlight(0);
+        }
+    }
+
+
+
+    public static List<Tile> GetReachableEnemyLocations(List<Tile> moveableSpaces, Character chara)
+    {
+        List<Tile> reachableEnemyLocations = new List<Tile>();
+        foreach (var tile in moveableSpaces)
+        {
+            foreach (var neighbor in tile.neighbors)
+            {
+                if (neighbor != null && (Math.Abs(tile.height - neighbor.height) <= chara.atkHeightLow)
+                    && !reachableEnemyLocations.Contains(neighbor))
+                {
+                    reachableEnemyLocations.Add(neighbor);
+                }
+            }
+        }
+        return reachableEnemyLocations;
+    }
+
+
+    public static Character DetermineTarget(Character curChar, List<Tile> map, List<Character> charaList, List<Tile> moveableSpaces)
+    {
+        int randNum;
+
+        Character target = null;
+        double damage;
+        double maxDamage = 10000;
+        List<Character> possibleTargets = new List<Character>();
+
+        //get list of tiles where an enemy could be reached
+        List<Tile> reachableEnemyLocations = GetReachableEnemyLocations(moveableSpaces, curChar);
+
+        //see if any target is in range
+        foreach (var chara in charaList)
+        {
+            if (chara.group == 1) //if character in list is player character - tentative, since may organize to have separate character lists for player characters and enemies, in which case we'll just pass the player list as the parameter
+            {
+                if (reachableEnemyLocations.Contains(chara.tileLoc))
+                {
+                    possibleTargets.Add(chara);
+                }
+            }
+        }
+
+        if (possibleTargets.Count == 1)
+            return possibleTargets[0];
+        else if (possibleTargets.Count == 0)
+        {
+            foreach (var chara in charaList)
+            {
+                if (chara.group == 1)
+                    possibleTargets.Add(chara);
+            }
+        }
+
+
+        foreach (var chara in possibleTargets)
+        {
+            damage = (chara.hpStat - 5.0) / chara.hpStat; //tentative equation until attack script is complete
+            if (damage == maxDamage)
+            {
+                randNum = UnityEngine.Random.Range(1, 2);
+                if (randNum % 2 == 0)
+                    target = chara;
+            }
+            else if (damage < maxDamage)
+            {
+                maxDamage = damage;
+                target = chara;
+            }
+        }
+
+        return target;
+    }
+
+    protected List<Tile> TilesInAttackRange(List<Tile> map)
+    {
+        List<Tile> tilesInAttackRange = new List<Tile>();
+        Queue<Tile> toCheck = new Queue<Tile>();
+        Tile[] neighbors = new Tile[4] { null, null, null, null };
+        Tile start = tileLoc;
+        Tile cur;
+
+        XMLManager.resetMap(map);
+
+        start.cost = 0;
+        toCheck.Enqueue(start);
+        tilesInAttackRange.Add(start);
+
+        while (toCheck.Count != 0)
+        {
+            cur = toCheck.Dequeue();
+            neighbors = cur.neighbors;
+
+            foreach (var tile in neighbors)
+            {
+                if (tile != null)
+                {
+                    if (tile.cost == -1 || (cur.cost + 1 < tile.cost))
+                        tile.cost = cur.cost + 1;
+                    if(tile.cost <= atkRange && !tilesInAttackRange.Contains(tile)
+                        && Math.Abs(cur.height - tile.height) <= atkHeightLow)
+                    {
+                        tilesInAttackRange.Add(tile);
+                        toCheck.Enqueue(tile);
+                    }
+                }    
+            }
+        }
+        return tilesInAttackRange;
+    }
+
 }
