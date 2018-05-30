@@ -2,18 +2,34 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using System.Reflection;
 using UnityEngine;
 
 public class Character : MonoBehaviour {
-    public int moveStat = 4;
+    public string charName;                 // name
+
+    public int currhpStat;                  // hp & mp
+    public int maxhpStat = 50;
+    public int currmpStat;
+    public int maxmpStat = 25;
+
+    public int attackStat = 10;             // attack, defense, speed
+    public int magicAtkStat = 10;
+    public int defenseStat = 5;
+    public int magicDefStat = 5;
+    public int speed = 10;
+
+    public int moveStat = 4;                // move, jump, evade
     public int jumpStat = 2;
-    public int hpStat = 25;
-    public int attackStat = 5;
-    public int atkRange = 1;
+    public int evadeStat = 50;
+
+    public int atkRange = 1;                // attack range
     public int atkHeightLow = 1;
     public int atkHeightHigh = -2;
 
+    public int weapAtk = 25;
+    public bool ko = false;
+
+    public int id;                          // for UI portrait (assetholder)
     public int currFace = 3;
     public Tile tileLoc;
     public int group;
@@ -23,7 +39,7 @@ public class Character : MonoBehaviour {
     public float moveSpeed;
     
     public SpriteRenderer charSprite;
-    protected Animator charAnimator;
+    public Animator charAnimator;
     protected GameObject shadow;                    // shadow transform movement needs fixing for high and low jumps
 
     protected virtual void Awake()
@@ -32,6 +48,8 @@ public class Character : MonoBehaviour {
         charAnimator = GetComponent<Animator>();
         moveSpeed = 3.5f;
         group = 1;
+        currhpStat = maxhpStat;
+        currmpStat = maxmpStat;
     }
 
     protected virtual void Start()
@@ -39,47 +57,110 @@ public class Character : MonoBehaviour {
         shadow = (GameObject)Instantiate(PrefabHolder.Instance.Shadow, tileLoc.transform.position, Quaternion.identity);
         shadow.transform.parent = transform;
     }
-    
-    public void Attack(Tile atkTile, List<Character> chars, List<Enemy> enems)
-    {
-        Character player = null;
-        Enemy enemy = null;
 
-        // face the proper direction to move to next tile
+
+    public int Attack(Tile atkTile, List<Character> chars, int damage, int hit)
+    {
+        Character target = null;
+        int realDamage = 0;
+
+        // face the proper direction 
         int newDir = getDir(tileLoc, atkTile);
         faceDir(newDir);
 
-        if (atkTile.occupied == 1)
+        // inflict damage
+        target = atkTile.getChar(chars);
+        if (hit <= calcHit(target))
+            realDamage = damage;
+        target.currhpStat -= realDamage;
+
+        // set attack animation
+        if (currFace == 0 || currFace == 1)
+            charAnimator.SetTrigger("marchAttackB");
+        else
+            charAnimator.SetTrigger("marchAttackF");
+
+        // check if target is KO'd or weakened
+        target.checkKO();
+        target.checkWeak();
+
+        if (realDamage != 0)
         {
-            player = atkTile.getChar(chars);
-            player.hpStat -= attackStat;
-            if (currFace == 0 || currFace == 1)
-                charAnimator.SetTrigger("marchAttackB");
+            // set target hit animation
+            if (target.currFace == 0 || target.currFace == 1)
+                target.charAnimator.SetTrigger("marchHitB");
             else
-                charAnimator.SetTrigger("marchAttackF");
-
-            if (player.currFace == 0 || player.currFace == 1)
-                player.GetComponent<Animator>().SetTrigger("marchHitB");
-            else
-                player.GetComponent<Animator>().SetTrigger("marchHitF");
+                target.charAnimator.SetTrigger("marchHitF");
         }
-        else if (atkTile.occupied == 2)
-        {
-            enemy = atkTile.getEnem(enems);
-            enemy.hpStat -= attackStat;
 
-            if (currFace == 0 || currFace == 1)
-                charAnimator.SetTrigger("marchAttackB");
-            else
-                charAnimator.SetTrigger("marchAttackF");
-
-            if (enemy.currFace == 0 || enemy.currFace == 1)
-                enemy.GetComponent<Animator>().SetTrigger("marchHitB");
-            else
-                enemy.GetComponent<Animator>().SetTrigger("marchHitF");
-        }
+        return realDamage;
     }
-    
+
+    // calculate damage inflicted on target
+    public int calcDamage(Character target)
+    {
+        float damageFloat = (attackStat - (target.defenseStat / 2)) * ((float)weapAtk / 100);
+        int damage = (int)damageFloat;
+        return damage;
+    }
+
+    // relative facing calculation for evade (hit chance)
+    public int calcHit(Character target)
+    {
+        int evadeTot = 0;
+        int newDir = getDir(tileLoc, target.tileLoc);
+
+        // attack from behind (facing same direction) = evade / 4
+        if (newDir == target.currFace)
+            evadeTot = target.evadeStat / 4;
+
+        // attack from front (facing opposite direction) = evade
+        else if (newDir == 0 && target.currFace == 2 || newDir == 2 && target.currFace == 0 ||
+            newDir == 1 && target.currFace == 3 || newDir == 3 && target.currFace == 1)
+            evadeTot = target.evadeStat;
+
+        // attack from sides = evade / 2
+        else
+            evadeTot = target.evadeStat / 2;
+
+        return 100 - evadeTot;
+    }
+
+    // check if character is KO'd
+    private bool checkKO()
+    {
+        if (currhpStat <= 0)
+        {
+            currhpStat = 0;
+            ko = true;
+
+            resetAnim();
+            if (currFace == 0 || currFace == 1)
+                charAnimator.SetBool("marchKOB", true);
+            else
+                charAnimator.SetBool("marchKOF", true);
+
+            return true;
+        }
+        return false;
+    }
+
+    // check if character is weakened
+    private bool checkWeak()
+    {
+        if (currhpStat <= (maxhpStat / 5) && !ko)
+        {
+            if (currFace == 0 || currFace == 1)
+                charAnimator.SetBool("marchWeakB", true);
+            else
+                charAnimator.SetBool("marchWeakF", true);
+
+            return true;
+        }
+        return false;
+    }
+
+    // highlight character (grey'd out for attacks)
     public void highlight(bool status)
     {
         if (status)
@@ -119,7 +200,7 @@ public class Character : MonoBehaviour {
             int heightDiff = (path[i].height > tileLoc.height) ? path[i].height - tileLoc.height : tileLoc.height - path[i].height;
             if (heightDiff == 1)
             {
-                resetAnim(charAnimator);
+                resetAnim();
                 if (newDir == 0 || newDir == 1)
                     charAnimator.SetBool("marchLowJumpB", true);         
                 else if (newDir == 2 || newDir == 3)
@@ -127,7 +208,7 @@ public class Character : MonoBehaviour {
             }
             else if (heightDiff >= 2)
             {
-                resetAnim(charAnimator);
+                resetAnim();
                 if (newDir == 0 || newDir == 1)
                     charAnimator.SetBool("marchHighJumpB", true);
                 else if (newDir == 2 || newDir == 3)
@@ -157,11 +238,13 @@ public class Character : MonoBehaviour {
             }
 
             // change the sprite back to idle walking animation
-            resetAnim(charAnimator);
+            resetAnim();
             if (newDir == 0 || newDir == 1)
                 charAnimator.SetBool("marchWalkB", true);
             else if (newDir == 2 || newDir == 3)
                 charAnimator.SetBool("marchWalkF", true);
+
+            checkWeak();
                 
             tileLoc = path[i];
             tileLoc.tileHighlight(0);
@@ -194,13 +277,13 @@ public class Character : MonoBehaviour {
 
         if (dir == 0 || dir == 1)
         {
-            resetAnim(charAnimator);
+            resetAnim();
             charAnimator.SetBool("marchWalkB", true);
             currFace = dir;
         }
         else if (dir == 2 || dir == 3)
         {
-            resetAnim(charAnimator);
+            resetAnim();
             charAnimator.SetBool("marchWalkF", true);
             currFace = dir;
         }
@@ -220,12 +303,12 @@ public class Character : MonoBehaviour {
     }
 
     // Reset Character Animation back to default state (walking, front)
-    protected void resetAnim(Animator anim)
+    protected void resetAnim()
     {
-        foreach (AnimatorControllerParameter param in anim.parameters)
+        foreach (AnimatorControllerParameter param in charAnimator.parameters)
         {
             if (param.type == AnimatorControllerParameterType.Bool)
-                anim.SetBool(param.name, false);
+                charAnimator.SetBool(param.name, false);
         }
     }
 
@@ -370,11 +453,36 @@ public class Character : MonoBehaviour {
         return res;
     }
 
-    // set a Character parameter to another value
-    // (useful if not all parameters public)
-    public void setStat<T>(string statName, T value)
+    // set character stats (-9 if keep as is)
+    public void setStats(int hp, int mp, int atk, int def, int mAtk, int mDef, int spd, int move, int jump, int evade)
     {
-        FieldInfo field = GetType().GetField(statName);
-        field.SetValue(this, value);
+        if (hp != -9)
+        {
+            currhpStat = hp;             
+            maxhpStat = hp;
+        }
+        if (mp != -9)
+        {
+            currmpStat = mp;
+            maxmpStat = mp;
+        }
+
+        if (atk != -9)
+            attackStat = atk;
+        if (def != -9)
+            defenseStat = def;
+        if (mAtk != -9)
+            magicAtkStat = mAtk;
+        if (mDef != -9)
+            magicDefStat = mDef;
+        if (spd != -9)
+            speed = spd;
+
+        if (move != -9)
+            moveStat = move;             
+        if (jump != -9)
+            jumpStat = jump;
+        if (evade != -9)
+            evadeStat = evade;
     }
 }

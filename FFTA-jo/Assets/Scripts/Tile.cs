@@ -59,23 +59,13 @@ public class Tile : MonoBehaviour {
         }
     }
 
+    // get character at current tile
     public Character getChar(List<Character> characters)
     {
         foreach (var actor in characters)
         {
             if (actor.tileLoc == this)
                 return actor;
-        }
-
-        return null;
-    }
-
-    public Enemy getEnem(List<Enemy> enemies)
-    {
-        foreach(var enemy in enemies)
-        {
-            if (enemy.tileLoc == this)
-                return enemy;
         }
 
         return null;

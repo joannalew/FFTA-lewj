@@ -4,14 +4,15 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class BattleUI : MonoBehaviour {
-    public int actMenuSelected = 0;
-    private Text[] actOptions;
-    private int numOptions = 4;
+    public int actMenuSelected = 0;             // current selected option
+    private Text[] actOptions;                  // Text options
+    private int numOptions = 4;                 // number of options
+    private bool[] actTriggers;                 // selected previously or not (if can't select twice)
 
-    // Use this for initialization
     void Start () {
         actMenuSelected = 0;
         actOptions = GetComponentsInChildren<Text>(true);
+        actTriggers = new bool[numOptions];
         highlightOption(actMenuSelected);
     }
 
@@ -19,9 +20,12 @@ public class BattleUI : MonoBehaviour {
     {
         unhighlightOption(actMenuSelected);
 
-        actMenuSelected++;
-        if (actMenuSelected == numOptions)
-            actMenuSelected = 0;
+        do
+        {
+            actMenuSelected++;
+            if (actMenuSelected == numOptions)
+                actMenuSelected = 0;
+        } while (actTriggers[actMenuSelected]);
 
         highlightOption(actMenuSelected);
     }
@@ -37,25 +41,53 @@ public class BattleUI : MonoBehaviour {
         highlightOption(actMenuSelected);
     }
 
+    public void selectOption()
+    {
+        actTriggers[actMenuSelected] = true;
+        actOptions[actMenuSelected].color = Color.grey;
+        actOptions[actMenuSelected].GetComponent<Outline>().effectColor = Color.black;
+    }
+
     public void highlightOption(int optionID)
     {
-        actOptions[optionID].color = Color.yellow;
-        actOptions[optionID].GetComponent<Outline>().effectColor = Color.magenta;
+        if (!actTriggers[optionID])
+        {
+            actOptions[optionID].color = Color.yellow;
+            actOptions[optionID].GetComponent<Outline>().effectColor = Color.magenta;
+        }
     }
 
     public void unhighlightOption(int optionID)
     {
-        actOptions[optionID].color = Color.white;
-        actOptions[optionID].GetComponent<Outline>().effectColor = Color.black;
+        if (!actTriggers[optionID])
+        {
+            actOptions[optionID].color = Color.white;
+            actOptions[optionID].GetComponent<Outline>().effectColor = Color.black;
+        }
     }
 
     public void resetMenu()
     {
-        if (actMenuSelected != 0)
+        unhighlightOption(actMenuSelected);
+        actMenuSelected = 0;
+
+        while (actTriggers[actMenuSelected])
+            actMenuSelected++;
+
+        highlightOption(actMenuSelected);
+    }
+
+    public void resetOptions()
+    {
+        for (int i = 0; i < numOptions; i++)
         {
-            unhighlightOption(actMenuSelected);
-            actMenuSelected = 0;
-            highlightOption(actMenuSelected);
+            actTriggers[i] = false;
+            unhighlightOption(i);
         }
+    }
+
+    public void setNumOptions(int num)
+    {
+        numOptions = num;
     }
 }

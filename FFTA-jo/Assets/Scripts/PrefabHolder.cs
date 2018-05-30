@@ -11,9 +11,10 @@ public class PrefabHolder : MonoBehaviour {
     public GameObject battleUI;
     public GameObject leftUI;
     public GameObject rightUI;
+    public GameObject sysUI;
+    public GameObject damageUI;
 
-    public GameObject[] Player;
-    public GameObject[] Enemies;
+    public GameObject[] Characters;
 
 
     private static PrefabHolder _instance;

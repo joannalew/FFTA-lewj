@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 4971454769081970}
   - component: {fileID: 212180707713398882}
   - component: {fileID: 95195764153771762}
-  - component: {fileID: 114198394313720988}
+  - component: {fileID: 114293794381892182}
   m_Layer: 0
   m_Name: NumouWMageE
   m_TagString: Untagged
@@ -59,7 +59,7 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
---- !u!114 &114198394313720988
+--- !u!114 &114293794381892182
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -67,10 +67,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 1989122084536914}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 69ca9bc2bfc3de44cae894bf8dc1f973, type: 3}
+  m_Script: {fileID: 11500000, guid: f494ec70289099b4788651d5a89cf200, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   moveStat: 4
+  jumpStat: 2
+  hpStat: 25
+  attackStat: 5
+  atkRange: 1
+  atkHeightLow: 1
+  atkHeightHigh: -2
   currFace: 3
   tileLoc: {fileID: 0}
   group: 0

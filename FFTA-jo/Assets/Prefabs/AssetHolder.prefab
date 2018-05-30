@@ -120,3 +120,18 @@ MonoBehaviour:
   - {fileID: 21300000, guid: aa71ed337c5dfb34391313cebbbf4867, type: 3}
   - {fileID: 21300000, guid: dedd7fb997c384c4e8a813c022d76b84, type: 3}
   - {fileID: 21300000, guid: 138e162cd1401cd48a1d71741f57ca9b, type: 3}
+  CharPortraits:
+  - {fileID: 21300000, guid: 869595575a3721947ba327c96d267400, type: 3}
+  - {fileID: 21300000, guid: bea02ebbb68a7b340be9758a36d2a158, type: 3}
+  - {fileID: 21300000, guid: 9626fb4065d6001448b788dd3eac95e8, type: 3}
+  - {fileID: 21300000, guid: 6ea350cda1c8d5c4ea596ab6c8b4df05, type: 3}
+  - {fileID: 21300000, guid: 08ceabfa89eef3447b1ed032aff5bbf1, type: 3}
+  - {fileID: 21300000, guid: 11864ae85efe3094eaacfc7eefd34c7a, type: 3}
+  - {fileID: 21300000, guid: 0a1a8c1fb4cadcf4a8dcea56f5ff9ab3, type: 3}
+  - {fileID: 21300000, guid: ad97b966e85693a43b480d92b8e95e20, type: 3}
+  - {fileID: 21300000, guid: 50eedb139a9999c4e95089077d9cf0ad, type: 3}
+  - {fileID: 21300000, guid: 826c8880c429e4141a0f3198cab4a3ce, type: 3}
+  - {fileID: 21300000, guid: b612f3a3d5129724aa687eabe525379d, type: 3}
+  - {fileID: 21300000, guid: 411b64aeb85728e4eb32d7b7f5a8c418, type: 3}
+  - {fileID: 21300000, guid: eb77c22379706ec4b89f65be38ed686c, type: 3}
+  - {fileID: 21300000, guid: e4e9edc8e5e4be344ab2f99722cbc88b, type: 3}

@@ -10,6 +10,7 @@ public class AssetHolder : MonoBehaviour {
     public Sprite[] Lutia1MapObjects;
     public Sprite Lutia2Map;
     public Sprite[] Lutia2MapObjects;
+    public Sprite[] CharPortraits;
 
     private static AssetHolder _instance;
 
