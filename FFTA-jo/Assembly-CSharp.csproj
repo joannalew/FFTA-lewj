@@ -55,6 +55,7 @@
      <Compile Include="Assets\Scripts\BattleUI.cs" />
      <Compile Include="Assets\Scripts\Character.cs" />
      <Compile Include="Assets\Scripts\GameManager.cs" />
+     <Compile Include="Assets\Scripts\InfoUI.cs" />
      <Compile Include="Assets\Scripts\MainMenu.cs" />
      <Compile Include="Assets\Scripts\PrefabHolder.cs" />
      <Compile Include="Assets\Scripts\Tile.cs" />

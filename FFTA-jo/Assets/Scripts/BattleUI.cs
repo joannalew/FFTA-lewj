@@ -9,8 +9,13 @@ public class BattleUI : MonoBehaviour {
     private int numOptions = 4;                 // number of options
     private bool[] actTriggers;                 // selected previously or not (if can't select twice)
 
-    void Start () {
+    void Awake ()
+    {
         actMenuSelected = 0;
+    }
+
+    void Start ()
+    {
         actOptions = GetComponentsInChildren<Text>(true);
         actTriggers = new bool[numOptions];
         highlightOption(actMenuSelected);
@@ -70,7 +75,7 @@ public class BattleUI : MonoBehaviour {
     {
         unhighlightOption(actMenuSelected);
         actMenuSelected = 0;
-
+        
         while (actTriggers[actMenuSelected])
             actMenuSelected++;
 
