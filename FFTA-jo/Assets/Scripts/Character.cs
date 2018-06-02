@@ -16,7 +16,7 @@ public class Character : MonoBehaviour {
     public int magicAtkStat = 10;
     public int defenseStat = 5;
     public int magicDefStat = 5;
-    public int speed = 10;
+    public int speedStat = 10;
 
     public int moveStat = 4;                // move, jump, evade
     public int jumpStat = 2;
@@ -25,6 +25,7 @@ public class Character : MonoBehaviour {
     public int atkRange = 1;                // attack range
     public int atkHeightLow = 1;
     public int atkHeightHigh = -2;
+    System.Random randomHit;
 
     public int weapAtk = 25;
     public bool ko = false;
@@ -50,6 +51,7 @@ public class Character : MonoBehaviour {
         group = 1;
         currhpStat = maxhpStat;
         currmpStat = maxmpStat;
+        randomHit = new System.Random();
     }
 
     protected virtual void Start()
@@ -59,10 +61,11 @@ public class Character : MonoBehaviour {
     }
 
 
-    public int Attack(Tile atkTile, List<Character> chars, int damage, int hit)
+    public int Attack(Tile atkTile, List<Character> chars)
     {
         Character target = null;
         int realDamage = 0;
+        int hit = randomHit.Next(1, 101);       // random number between 1 and 100
 
         // face the proper direction 
         int newDir = getDir(tileLoc, atkTile);
@@ -71,7 +74,7 @@ public class Character : MonoBehaviour {
         // inflict damage
         target = atkTile.getChar(chars);
         if (hit <= calcHit(target))
-            realDamage = damage;
+            realDamage = calcDamage(target);
         target.currhpStat -= realDamage;
 
         // set attack animation
@@ -92,6 +95,8 @@ public class Character : MonoBehaviour {
             else
                 target.charAnimator.SetTrigger("marchHitF");
         }
+
+        Debug.Log(checkGameStatus(target, chars));
 
         return realDamage;
     }
@@ -126,6 +131,21 @@ public class Character : MonoBehaviour {
         return 100 - evadeTot;
     }
 
+    // check game over / game won
+    private bool checkGameStatus(Character target, List<Character> chars)
+    {
+        int checkGroup = target.group;
+        bool gameOver = true;
+
+        foreach (Character actor in chars)
+        {
+            if (actor.group == checkGroup && !actor.ko)
+                gameOver = false;
+        }
+
+        return gameOver;
+    }
+
     // check if character is KO'd
     private bool checkKO()
     {
@@ -140,6 +160,7 @@ public class Character : MonoBehaviour {
             else
                 charAnimator.SetBool("marchKOF", true);
 
+            shadow.SetActive(false);
             return true;
         }
         return false;
@@ -155,6 +176,7 @@ public class Character : MonoBehaviour {
             else
                 charAnimator.SetBool("marchWeakF", true);
 
+            shadow.SetActive(false);
             return true;
         }
         return false;
@@ -365,7 +387,7 @@ public class Character : MonoBehaviour {
 
     // Return list of all Tiles that are within "moveStat" steps away from current character location
     // Used with Astar to generate which Tiles are moveable and should be highlighted
-    protected List<Tile> allMoves(List<Tile> map)
+    private List<Tile> allMoves(List<Tile> map)
     {
         List<Tile> open = new List<Tile>();
         List<Tile> closed = new List<Tile>();
@@ -387,19 +409,26 @@ public class Character : MonoBehaviour {
                 foreach (Tile tile in neighbors)
                 {
                     if (tile)
-                        if (!open.Contains(tile) && !closed.Contains(tile) && tile.occupied == 0)
+                        if (!open.Contains(tile) && !closed.Contains(tile) && (tile.occupied == 0 || tile.occupied == group))
                             open.Add(tile);
                 }
             }
 
         }
+
         closed.Remove(tileLoc);
+        for (int i = closed.Count - 1; i >= 0; i--)
+        {
+            if (closed[i].occupied != 0)
+                closed.RemoveAt(i);
+        }
+
         return closed;
     }
 
     // Basic Astar algorithm
     // Returns path (list of Tiles) from one Tile to another; null if no path available
-    protected List<Tile> Astar(List<Tile> map, Tile start, Tile end)
+    private List<Tile> Astar(List<Tile> map, Tile start, Tile end)
     {
         XMLManager.resetMap(map);
 
@@ -476,7 +505,7 @@ public class Character : MonoBehaviour {
         if (mDef != -9)
             magicDefStat = mDef;
         if (spd != -9)
-            speed = spd;
+            speedStat = spd;
 
         if (move != -9)
             moveStat = move;             
