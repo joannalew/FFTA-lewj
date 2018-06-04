@@ -61,11 +61,11 @@ public class Character : MonoBehaviour {
     }
 
 
-    public int Attack(Tile atkTile, List<Character> chars)
+    public int Attack(Tile atkTile, List<Character> chars, GameObject endgameTitle)
     {
         Character target = null;
         int realDamage = 0;
-        int hit = randomHit.Next(1, 101);       // random number between 1 and 100
+        int hit = randomHit.Next(1, 101);     // random number between 1 and 100
 
         // face the proper direction 
         int newDir = getDir(tileLoc, atkTile);
@@ -77,15 +77,13 @@ public class Character : MonoBehaviour {
             realDamage = calcDamage(target);
         target.currhpStat -= realDamage;
 
+        checkWeak();
+
         // set attack animation
         if (currFace == 0 || currFace == 1)
             charAnimator.SetTrigger("marchAttackB");
         else
             charAnimator.SetTrigger("marchAttackF");
-
-        // check if target is KO'd or weakened
-        target.checkKO();
-        target.checkWeak();
 
         if (realDamage != 0)
         {
@@ -96,7 +94,18 @@ public class Character : MonoBehaviour {
                 target.charAnimator.SetTrigger("marchHitF");
         }
 
-        Debug.Log(checkGameStatus(target, chars));
+        // check if target is KO'd or weakened
+        target.checkKO();
+        target.checkWeak();
+
+        if(checkGameStatus(target, chars))
+        {
+            if (target.group == 2)
+                endgameTitle.transform.GetChild(1).gameObject.SetActive(true);
+            else if (target.group == 1)
+                endgameTitle.transform.GetChild(2).gameObject.SetActive(true);
+            endgameTitle.transform.GetChild(0).gameObject.SetActive(true);
+        }
 
         return realDamage;
     }
@@ -171,6 +180,7 @@ public class Character : MonoBehaviour {
     {
         if (currhpStat <= (maxhpStat / 5) && !ko)
         {
+            resetAnim();
             if (currFace == 0 || currFace == 1)
                 charAnimator.SetBool("marchWeakB", true);
             else
@@ -208,6 +218,8 @@ public class Character : MonoBehaviour {
     // Moves the character sprite along the given Tile path
     protected IEnumerator SmoothMove(List<Tile> path)
     {
+        resetAnim();
+
         for (int i = 0; i < path.Count; i++)
         {
             Vector3 end = path[i].transform.position + charOffset;
@@ -265,11 +277,17 @@ public class Character : MonoBehaviour {
                 charAnimator.SetBool("marchWalkB", true);
             else if (newDir == 2 || newDir == 3)
                 charAnimator.SetBool("marchWalkF", true);
-
-            checkWeak();
                 
             tileLoc = path[i];
             tileLoc.tileHighlight(0);
+        }
+
+        if (!checkWeak())
+        {
+            if (currFace == 0 || currFace == 1)
+                charAnimator.SetBool("marchWalkB", true);
+            else if (currFace == 2 || currFace == 3)
+                charAnimator.SetBool("marchWalkF", true);
         }
     }
 
@@ -327,11 +345,16 @@ public class Character : MonoBehaviour {
     // Reset Character Animation back to default state (walking, front)
     protected void resetAnim()
     {
-        foreach (AnimatorControllerParameter param in charAnimator.parameters)
-        {
-            if (param.type == AnimatorControllerParameterType.Bool)
-                charAnimator.SetBool(param.name, false);
-        }
+        charAnimator.SetBool("marchWalkF", false);
+        charAnimator.SetBool("marchWalkB", false);
+        charAnimator.SetBool("marchLowJumpF", false);
+        charAnimator.SetBool("marchLowJumpB", false);
+        charAnimator.SetBool("marchHighJumpF", false);
+        charAnimator.SetBool("marchHighJumpB", false);
+        charAnimator.SetBool("marchWeakF", false);
+        charAnimator.SetBool("marchWeakB", false);
+        charAnimator.SetBool("marchKOF", false);
+        charAnimator.SetBool("marchKOB", false);
     }
 
     // Return list of Tiles to highlight for attack
