@@ -32,6 +32,7 @@ public class GameManager : MonoBehaviour
 
     private bool first = true;                      // reset menu hotfix
     private bool enemyRunning = false;
+    System.Random randomHit;
 
     // UI
     private Camera mainCamera;
@@ -51,6 +52,7 @@ public class GameManager : MonoBehaviour
         mLevel = MainMenu.level;
 
         moving = false;
+        randomHit = new System.Random();
     }
 
     private void Start()
@@ -359,7 +361,7 @@ public class GameManager : MonoBehaviour
                     // attack selected enemy
                     if (Input.GetKeyDown(KeyCode.Z))
                     {
-                        damage = player.Attack(currTile, charList, endgameTitle);
+                        damage = player.Attack(currTile, charList, endgameTitle, randomHit);
                         damageUI.GetComponent<InfoUI>().showDamage(enemy, damage);
                         actionMenu.GetComponent<BattleUI>().selectOption();
                         enemy.highlight(false);
@@ -681,7 +683,7 @@ public class GameManager : MonoBehaviour
             target.highlight(false);
             leftInfo.SetActive(false);
             rightInfo.SetActive(false);
-            int damage = actor.Attack(target.tileLoc, charList, endgameTitle);
+            int damage = actor.Attack(target.tileLoc, charList, endgameTitle, randomHit);
             damageUI.GetComponent<InfoUI>().showDamage(target, damage);
             yield return new WaitForSeconds(2);
         }

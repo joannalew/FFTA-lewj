@@ -25,7 +25,6 @@ public class Character : MonoBehaviour {
     public int atkRange = 1;                // attack range
     public int atkHeightLow = 1;
     public int atkHeightHigh = -2;
-    System.Random randomHit;
 
     public int weapAtk = 25;
     public bool ko = false;
@@ -51,7 +50,6 @@ public class Character : MonoBehaviour {
         group = 1;
         currhpStat = maxhpStat;
         currmpStat = maxmpStat;
-        randomHit = new System.Random();
     }
 
     protected virtual void Start()
@@ -61,7 +59,7 @@ public class Character : MonoBehaviour {
     }
 
 
-    public int Attack(Tile atkTile, List<Character> chars, GameObject endgameTitle)
+    public int Attack(Tile atkTile, List<Character> chars, GameObject endgameTitle, System.Random randomHit)
     {
         Character target = null;
         int realDamage = 0;
@@ -77,6 +75,7 @@ public class Character : MonoBehaviour {
             realDamage = calcDamage(target);
         target.currhpStat -= realDamage;
 
+        // Debug.Log(hit.ToString() + " " + calcHit(target));
         checkWeak();
 
         // set attack animation
