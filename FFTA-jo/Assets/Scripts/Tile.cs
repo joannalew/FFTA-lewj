@@ -18,6 +18,13 @@ public class Tile : MonoBehaviour {
     public Tile parent = null;  // a* stuff
     public int cost = -1;
 
+    private SoundEffects sfx_init;
+
+    private void Awake()
+    {
+        sfx_init = (SoundEffects)FindObjectOfType(typeof(SoundEffects));
+    }
+
     public Tile(int i, int ht, int r, int c, bool obj, Tile[] nbr)
     {
         id = i;

@@ -8,10 +8,12 @@ public class BattleUI : MonoBehaviour {
     private Text[] actOptions;                  // Text options
     private int numOptions = 4;                 // number of options
     private bool[] actTriggers;                 // selected previously or not (if can't select twice)
+    private SoundEffects sfx_init;
 
     void Awake ()
     {
         actMenuSelected = 0;
+        sfx_init = (SoundEffects)FindObjectOfType(typeof(SoundEffects));
     }
 
     void Start ()
@@ -23,6 +25,7 @@ public class BattleUI : MonoBehaviour {
 
     public void selectNext()
     {
+ //       sfx_init.playMainMenuSelectionSound();
         unhighlightOption(actMenuSelected);
 
         do
@@ -37,6 +40,7 @@ public class BattleUI : MonoBehaviour {
 
     public void selectPrev()
     {
+ //       sfx_init.playMainMenuSelectionSound();
         unhighlightOption(actMenuSelected);
 
         actMenuSelected--;
@@ -48,6 +52,7 @@ public class BattleUI : MonoBehaviour {
 
     public void selectOption()
     {
+//        sfx_init.playBattleMenuSelectionSound();
         actTriggers[actMenuSelected] = true;
         actOptions[actMenuSelected].color = Color.grey;
         actOptions[actMenuSelected].GetComponent<Outline>().effectColor = Color.black;
@@ -55,6 +60,7 @@ public class BattleUI : MonoBehaviour {
 
     public void highlightOption(int optionID)
     {
+        sfx_init.playMoveInBattleMenuSound();
         if (!actTriggers[optionID])
         {
             actOptions[optionID].color = Color.yellow;

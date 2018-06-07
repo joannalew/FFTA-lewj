@@ -42,6 +42,8 @@ public class Character : MonoBehaviour {
     public Animator charAnimator;
     protected GameObject shadow;                    // shadow transform movement needs fixing for high and low jumps
 
+    private SoundEffects sfx_init;
+
     protected virtual void Awake()
     {
         charSprite = GetComponent<SpriteRenderer>();
@@ -50,6 +52,8 @@ public class Character : MonoBehaviour {
         group = 1;
         currhpStat = maxhpStat;
         currmpStat = maxmpStat;
+
+        sfx_init = (SoundEffects)FindObjectOfType(typeof(SoundEffects));
     }
 
     protected virtual void Start()
@@ -91,7 +95,9 @@ public class Character : MonoBehaviour {
                 target.charAnimator.SetTrigger("marchHitB");
             else
                 target.charAnimator.SetTrigger("marchHitF");
+            sfx_init.playCharacterHitSound();
         }
+        else sfx_init.playAttackMissSound();
 
         // check if target is KO'd or weakened
         target.checkKO();
@@ -159,6 +165,7 @@ public class Character : MonoBehaviour {
     {
         if (currhpStat <= 0)
         {
+            sfx_init.playDeathSound();
             currhpStat = 0;
             ko = true;
 
@@ -205,6 +212,7 @@ public class Character : MonoBehaviour {
     {
         if (endTile.occupied == 0)
         {
+            sfx_init.playMainSound();
             currTile.occupied = 0;
             endTile.occupied = group;
             moveQueue = Astar(map, currTile, endTile);

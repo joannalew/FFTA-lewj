@@ -44,8 +44,15 @@ public class GameManager : MonoBehaviour
     private GameObject damageUI;
     private GameObject endgameTitle;
 
+    // Music and Sound Effects
+    private SoundEffects sfx_init;
+    private Music music_init;
+
     private void Awake()
     {
+        sfx_init = (SoundEffects)FindObjectOfType(typeof(SoundEffects));
+        music_init = (Music)FindObjectOfType(typeof(Music));
+
         Instance = this;
         mainCamera = Camera.main;
         mapObject = transform.Find("mapObject").gameObject;
@@ -118,6 +125,8 @@ public class GameManager : MonoBehaviour
             setChars(4, 1, 2, 1);          // white mage,  (0, 1)
             setChars(5, 10, 2, 1);         // archer,      (1, 0)
             setChars(0, 22, 2, 1);         // marche,      (2, 2)
+
+            music_init.playL1Music();
         }
         else if (level == 2)
         {
@@ -137,6 +146,8 @@ public class GameManager : MonoBehaviour
             setChars(4, 152, 0, 1);        // white mage,  (10, 14)
             setChars(5, 137, 0, 1);        // archer,      (9, 14)
             setChars(0, 121, 0, 1);        // marche,      (8, 13)
+
+            music_init.playL2Music();
         }
         else
         {
@@ -162,6 +173,8 @@ public class GameManager : MonoBehaviour
             setChars(4, 85, 0, 1);         // white mage,  (8, 12)
             setChars(5, 72, 0, 1);         // archer,      (7, 12)
             setChars(0, 58, 0, 1);         // marche,      (6, 11)
+
+            music_init.playL3Music();
         }
     }
 
@@ -251,12 +264,16 @@ public class GameManager : MonoBehaviour
                     // use arrow keys to move cursor around
                     if (Input.GetKeyDown(KeyCode.LeftArrow))
                         moveCursor(0);
+                
                     if (Input.GetKeyDown(KeyCode.UpArrow))
                         moveCursor(1);
+                    
                     if (Input.GetKeyDown(KeyCode.RightArrow))
                         moveCursor(2);
+
                     if (Input.GetKeyDown(KeyCode.DownArrow))
                         moveCursor(3);
+                    
 
                     // move player to selected tile
                     if (Input.GetKeyDown(KeyCode.Z) && currTile.glow == 1 && moving)
@@ -329,6 +346,7 @@ public class GameManager : MonoBehaviour
                     // choose move
                     if (Input.GetKeyDown(KeyCode.Z) && actionMenu.GetComponent<BattleUI>().actMenuSelected == 0)
                     {
+ //                       sfx_init.playBattleMenuSelectionSound();
                         setMenu(false);
                         glowTiles(player.AstarGlow(map), 1);
                         moving = true;
@@ -338,6 +356,7 @@ public class GameManager : MonoBehaviour
                     // choose action
                     if (Input.GetKeyDown(KeyCode.Z) && actionMenu.GetComponent<BattleUI>().actMenuSelected == 1)
                     {
+//                        sfx_init.playBattleMenuSelectionSound();
                         setMenu(false);
                         glowTiles(player.allAttack(map), 3);
                         moving = true;
@@ -347,6 +366,7 @@ public class GameManager : MonoBehaviour
                     // chose wait
                     if (Input.GetKeyDown(KeyCode.Z) && actionMenu.GetComponent<BattleUI>().actMenuSelected == 2)
                     {
+//                        sfx_init.playBattleMenuSelectionSound();
                         setMenu(false);
                         actionMenu.GetComponent<BattleUI>().resetOptions();
                         selectNextChar(charList);
@@ -447,6 +467,7 @@ public class GameManager : MonoBehaviour
 
                     playerTile = player.tileLoc;
                     setCursor(playerTile);
+                    sfx_init.playNewPlayerTurnSound();
                     mainCamera.transform.position = new Vector3(playerTile.transform.position.x, playerTile.transform.position.y, -10);
                     break;
                 }
@@ -469,6 +490,7 @@ public class GameManager : MonoBehaviour
     // 0 = left, 1 = up, 2 = right, 3 = down
     private void moveCursor(int direction)
     {
+        sfx_init.playCursorSound();
         prevTile = currTile;
         currTile = currTile.neighbors[direction];
         if (currTile != null)
